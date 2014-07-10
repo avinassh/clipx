@@ -4,4 +4,7 @@ pocket_fetch:
   class: CronTask
   args: "pocket_fetch"
   description: Fetches Updates from pocket
-  rails_envs: development, production, staging
+  rails_envs: 
+    - development
+    - production
+    - staging
