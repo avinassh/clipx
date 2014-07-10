@@ -1,0 +1,7 @@
+pocket_fetch:
+  cron: "* * * * *"
+  queue: cron
+  class: CronTask
+  args: "pocket_fetch"
+  description: Fetches Updates from pocket
+  rails_envs: development, production, staging
