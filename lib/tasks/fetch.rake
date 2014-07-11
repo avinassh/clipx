@@ -27,9 +27,10 @@ namespace :fetch do
           article = Article.create(
             :url=>article['resolved_url'],
             :title=>article['given_title'],
-            :provider=>'pocket'
+            :provider=>'pocket',
             #TODO: Insert tags which we get from pocket as well
             #TODO: Check for any images that pocket gave us
+            :content => article['excerpt']
           )
         end
         Resque.enqueue(ReadabilityJob, article.id) unless article.id.nil?
