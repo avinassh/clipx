@@ -26,7 +26,8 @@ class CronTask
   end
 
   def pocket_fetch
-    puts "pocket_fetch task"
+    puts "fetch:pocket starting"
+    Rake::Task["fetch:pocket"].invoke
   end
 
   def some_other_task

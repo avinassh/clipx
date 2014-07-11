@@ -1,5 +1,5 @@
 pocket_fetch:
-  cron: "* * * * *"
+  cron: "*/5 * * * *"
   queue: cron
   class: CronTask
   args: "pocket_fetch"

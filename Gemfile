@@ -15,6 +15,7 @@ gem 'devise'  #Handles user authentication
 gem 'haml-rails'
 gem 'high_voltage'  #Static Pages like about
 gem 'omniauth-pocket' #Connect a pocket account
+gem 'getpocket' #Talk to the pocket API
 gem "resque"  #Background Jobs
 gem "resque-scheduler"  #Schedule background jobs
 group :development do
