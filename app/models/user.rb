@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:pocket]
   has_one :pocket_account
+  has_many :article
 
   def add_pocket_account(omniauth)
     token = omniauth.credentials.token

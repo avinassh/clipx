@@ -16,20 +16,27 @@ namespace :fetch do
         :contentType => 'article',
         :sort => 'newest',
         :detailType => 'simple',
-        :since => account.last_fetched,
+        :since => 0,
         :count=>10
       )
-      #Update the account in our db
-      account.update_attribute 'last_fetched', current_time
 
       #Iterate over the result and insert to db
-      result.each do |article|
-        puts article['resolved_url']
-        #TODO: Insert each item to database
-        #ActiveRecord::Base.transaction do
-        #  1000.times { Model.create(options) }
-        #end
+      result.each do |key, article
+|        puts article['resolved_url']
+        ActiveRecord::Base.transaction do
+          article = Article.create(
+            :url=>article['resolved_url'],
+            :title=>article['given_title']
+            #TODO: Insert tags which we get from pocket as well
+            #TODO: Check for any images that pocket gave us
+          )
+        end
+        Resque.enqueue(ReadabilityJob, article.id) unless article.id.nil?
+        #TODO: Throw error if article save failed, or if resque enqueue failed
       end
+
+      #Update the account in our db
+      account.update_attribute 'last_fetched', current_time
     end
   end
 end

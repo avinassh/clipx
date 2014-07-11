@@ -15,5 +15,7 @@ namespace :resque do
 
     # set a custom namespace for redis (optional)
     Resque.redis.namespace = "resque:clipx"
+    #This is duplicated in config/initializers/resque.rb because the setup task doesn't run when queing a job
+    #and initializers aren't run when running the scheduler rake task
   end
 end
