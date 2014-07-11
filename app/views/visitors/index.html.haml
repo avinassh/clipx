@@ -7,6 +7,8 @@
     - if current_user.pocket_account
       %span
         = current_user.pocket_account.username
+        Last fetched
+        = time_ago_in_words Time.at(current_user.pocket_account.last_fetched).to_datetime
         = link_to "(Re-integrate)", user_omniauth_authorize_path(:pocket)
     - else
       = link_to "Integrate with pocket", user_omniauth_authorize_path(:pocket)
