@@ -16,7 +16,7 @@ namespace :fetch do
         :contentType => 'article',
         :sort => 'newest',
         :detailType => 'simple',
-        :since => 0,
+        :since => account.last_fetched,
         :count=>10
       )
 
@@ -26,7 +26,8 @@ namespace :fetch do
         ActiveRecord::Base.transaction do
           article = Article.create(
             :url=>article['resolved_url'],
-            :title=>article['given_title']
+            :title=>article['given_title'],
+            :provider=>'pocket'
             #TODO: Insert tags which we get from pocket as well
             #TODO: Check for any images that pocket gave us
           )
@@ -36,7 +37,7 @@ namespace :fetch do
       end
 
       #Update the account in our db
-      account.update_attribute 'last_fetched', current_time
+      account.update_attribute :last_fetched, current_time
     end
   end
 end
