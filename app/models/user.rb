@@ -4,8 +4,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:pocket]
-  def add_pocket_token(token)
-    self.pocket = token
-    self.save
+  has_one :pocket_account
+
+  def add_pocket_account(omniauth)
+    token = omniauth.credentials.token
+    pocket_username = omniauth.uid
+
+    #Delete the current pocket account associated
+    self.pocket_account.delete if self.pocket_account
+    self.create_pocket_account ({:token=>token, :last_fetched=>Time.now.to_i, :username=>pocket_username})
   end
+
 end

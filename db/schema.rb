@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709143214) do
+ActiveRecord::Schema.define(version: 20140710164058) do
+
+  create_table "pocket_accounts", force: true do |t|
+    t.string  "token"
+    t.integer "last_fetched"
+    t.string  "username"
+    t.integer "user_id"
+  end
+
+  add_index "pocket_accounts", ["user_id"], name: "index_pocket_accounts_on_user_id"
+  add_index "pocket_accounts", ["username"], name: "index_pocket_accounts_on_username", unique: true
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -27,7 +37,6 @@ ActiveRecord::Schema.define(version: 20140709143214) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.string   "pocket"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
