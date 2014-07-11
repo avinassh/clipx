@@ -231,6 +231,8 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :pocket, Rails.application.secrets.pocket_key
+  config.omniauth :evernote, Rails.application.secrets.evernote_key, Rails.application.secrets.evernote_secret,
+    :client_options => { :site => 'https://sandbox.evernote.com' }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

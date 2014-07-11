@@ -9,8 +9,20 @@
         = current_user.pocket_account.username
         Last fetched
         = time_ago_in_words Time.at(current_user.pocket_account.last_fetched).to_datetime
+        ago
         = link_to "(Re-integrate)", user_omniauth_authorize_path(:pocket)
     - else
       = link_to "Integrate with pocket", user_omniauth_authorize_path(:pocket)
+  %div
+    Evernote Integration :
+    - if current_user.evernote_account
+      %span
+        = current_user.evernote_account.username
+        Last published
+        = time_ago_in_words Time.at(current_user.evernote_account.last_published).to_datetime
+        ago
+        = link_to "(Re-integrate)", user_omniauth_authorize_path(:evernote)
+    - else
+      = link_to "Integrate with evernote", user_omniauth_authorize_path(:evernote)
 - else
   You are not logged in 

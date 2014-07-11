@@ -3,8 +3,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:pocket]
+         :omniauthable, :omniauth_providers => [:pocket, :evernote]
   has_one :pocket_account
+  has_one :evernote_account
   has_many :article
 
   def add_pocket_account(omniauth)
@@ -14,6 +15,14 @@ class User < ActiveRecord::Base
     #Delete the current pocket account associated
     self.pocket_account.delete if self.pocket_account
     self.create_pocket_account ({:token=>token, :last_fetched=>Time.now.to_i, :username=>pocket_username})
+  end
+
+  def add_evernote_account(omniauth)
+    token = omniauth.credentials.token
+    username = omniauth.info.nickname
+
+    self.evernote_account.delete if self.evernote_account
+    self.create_evernote_account ({:token=>token, :last_published=>Time.now.to_i, :username=>username})
   end
 
 end

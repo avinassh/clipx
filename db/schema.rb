@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140711094150) do
+ActiveRecord::Schema.define(version: 20140711140719) do
 
   create_table "articles", force: true do |t|
     t.string   "url"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20140711094150) do
     t.datetime "updated_at"
     t.integer  "user_id"
   end
+
+  create_table "evernote_accounts", force: true do |t|
+    t.string  "token"
+    t.integer "last_published"
+    t.string  "username"
+    t.integer "user_id"
+  end
+
+  add_index "evernote_accounts", ["user_id"], name: "index_evernote_accounts_on_user_id"
+  add_index "evernote_accounts", ["username"], name: "index_evernote_accounts_on_username", unique: true
 
   create_table "pocket_accounts", force: true do |t|
     t.string  "token"
