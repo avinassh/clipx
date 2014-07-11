@@ -62,5 +62,3 @@ All articles are indexed and saved in elasticsearch, most probably. A user can s
 
 ##Images & Media
 Currently, we just archive html text, and don't worry about images or videos or making them available offline.
-
-Talk about brightness 0 issue in ubuntu
