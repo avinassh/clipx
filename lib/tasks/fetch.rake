@@ -21,8 +21,8 @@ namespace :fetch do
       )
 
       #Iterate over the result and insert to db
-      result.each do |key, article
-|        puts article['resolved_url']
+      result.each do |key, article|
+        puts article['resolved_url']
         ActiveRecord::Base.transaction do
           article = Article.create(
             :url=>article['resolved_url'],
