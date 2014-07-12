@@ -54,6 +54,9 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     evernote-thrift (1.25.1)
+    evernote_oauth (0.2.3)
+      evernote-thrift
+      oauth (>= 0.4.1)
     execjs (2.2.1)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
@@ -225,6 +228,7 @@ DEPENDENCIES
   bootstrap-sass
   coffee-rails (~> 4.0.0)
   devise
+  evernote_oauth
   getpocket
   haml-rails
   high_voltage

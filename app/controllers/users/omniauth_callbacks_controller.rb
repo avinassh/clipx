@@ -6,6 +6,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def evernote
+    #render json: request.env['omniauth.auth']
     current_user.add_evernote_account request.env['omniauth.auth']
     set_flash_message(:notice, :success, :kind => "Evernote")
     redirect_to '/'

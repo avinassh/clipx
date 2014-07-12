@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140711140719) do
+ActiveRecord::Schema.define(version: 20140712011313) do
 
   create_table "articles", force: true do |t|
     t.string   "url"
     t.string   "title"
+    t.string   "heading"
     t.string   "content"
     t.string   "image"
     t.string   "tags"
@@ -31,6 +32,7 @@ ActiveRecord::Schema.define(version: 20140711140719) do
     t.integer "last_published"
     t.string  "username"
     t.integer "user_id"
+    t.string  "notestore_url"
   end
 
   add_index "evernote_accounts", ["user_id"], name: "index_evernote_accounts_on_user_id"

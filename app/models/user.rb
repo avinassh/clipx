@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   def add_evernote_account(omniauth)
     token = omniauth.credentials.token
     username = omniauth.info.nickname
-
+    notestore_url = omniauth.extra.access_token.params.edam_noteStoreUrl
     self.evernote_account.delete if self.evernote_account
     self.create_evernote_account ({:token=>token, :last_published=>Time.now.to_i, :username=>username})
   end
