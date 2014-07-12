@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140712011313) do
     t.string  "username"
     t.integer "user_id"
     t.string  "notestore_url"
+    t.string  "notebook_guid"
   end
 
   add_index "evernote_accounts", ["user_id"], name: "index_evernote_accounts_on_user_id"
