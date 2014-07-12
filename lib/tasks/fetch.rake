@@ -19,7 +19,7 @@ namespace :fetch do
         :state => 'all',
         :contentType => 'article',
         :sort => 'newest',
-        :detailType => 'simple',
+        :detailType => 'complete',
         :since => account.last_fetched,
         :count=>10
       )
@@ -27,19 +27,26 @@ namespace :fetch do
       # Iterate over the result and insert to db
       result.each do |key, article|
         puts article['resolved_url']
-        tags = tag article['tags'].map { |name,tag| tag}.join ',' if article['tags']
-        ActiveRecord::Base.transaction do
-          article = user.articles.create(
-            :url=>article['resolved_url'],
-            :title=>article['given_title'],
-            :provider=>'pocket',
-            # TODO: Save the tags from the above variable
-            # TODO: Check for any images that pocket gave us
-            :content => article['excerpt'],
-          )
+        tags = article['tags'].map { |name,tag| tag}.join ',' if article['tags']
+        begin
+          ActiveRecord::Base.transaction do
+            article = user.articles.create(
+              :url=>article['resolved_url'],
+              :title=>article['given_title'],
+              :provider=>'pocket',
+              :tags=>tags,
+              #TODO: Insert tags which we get from pocket as well
+              #TODO: Check for any images that pocket gave us
+              :content => article['excerpt'],
+            )
+          end
+          Resque.enqueue ReadabilityJob, article.id unless article.id.nil?
+          # TODO: Throw error if article save failed, or if resque enqueue failed
+
+        # Catching any non-unique entry error. Uniqueness check in user_id + url
+        rescue ActiveRecord::RecordNotUnique
+          puts 'Not unique'
         end
-        Resque.enqueue ReadabilityJob, article.id unless article.id.nil?
-        # TODO: Throw error if article save failed, or if resque enqueue failed
       end
 
       puts "No articles fetched" if result.size == 0

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140712011313) do
+ActiveRecord::Schema.define(version: 20140712125518) do
 
   create_table "articles", force: true do |t|
     t.string   "url"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20140712011313) do
     t.datetime "updated_at"
     t.integer  "user_id"
   end
+
+  add_index "articles", ["url", "user_id"], name: "index_articles_on_url_and_user_id", unique: true
 
   create_table "evernote_accounts", force: true do |t|
     t.string  "token"
