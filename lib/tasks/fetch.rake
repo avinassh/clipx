@@ -23,13 +23,13 @@ namespace :fetch do
       #Iterate over the result and insert to db
       result.each do |key, article|
         puts article['resolved_url']
-        puts article['tags'] || "No tags"
+        tags = tag article['tags'].map { |name,tag| tag}.join ',' if article['tags']
         ActiveRecord::Base.transaction do
           article = user.articles.create(
             :url=>article['resolved_url'],
             :title=>article['given_title'],
             :provider=>'pocket',
-            #TODO: Insert tags which we get from pocket as well
+            #TODO: Save the tags from the above variable
             #TODO: Check for any images that pocket gave us
             :content => article['excerpt'],
           )
