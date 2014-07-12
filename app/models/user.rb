@@ -18,11 +18,25 @@ class User < ActiveRecord::Base
   end
 
   def add_evernote_account(omniauth)
+    
+    #Get required variables from omniauth
     token = omniauth.credentials.token
     username = omniauth.info.nickname
-    notestore_url = omniauth.extra.access_token.params.edam_noteStoreUrl
+    notestore_url = omniauth.extra.access_token.params['edam_noteStoreUrl']
+
+    #Create or find a notebook with the given name
+    evernote = EvernoteUtil.new notestore_url, token
+    notebook_guid = evernote.find_or_create_notebook('ClipX').guid
+
+    #Delete any existing evernote account connection
     self.evernote_account.delete if self.evernote_account
-    self.create_evernote_account ({:token=>token, :last_published=>Time.now.to_i, :username=>username})
+    self.create_evernote_account(
+      :token=>token,
+      :last_published=>Time.now.to_i,
+      :username=>username,
+      :notestore_url => notestore_url,
+      :notebook_guid => notebook_guid
+    )
   end
 
 end
