@@ -25,7 +25,7 @@ namespace :fetch do
         puts article['resolved_url']
         puts article['tags'] || "No tags"
         ActiveRecord::Base.transaction do
-          article = user.article_create(
+          article = user.articles.create(
             :url=>article['resolved_url'],
             :title=>article['given_title'],
             :provider=>'pocket',

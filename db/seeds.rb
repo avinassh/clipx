@@ -8,3 +8,10 @@
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
 # Environment variables (ENV['...']) can be set in the file .env file.
+article = user.articles.create(
+  :url=>'http://getpocket.com/developer/docs/v3/retrieve',
+  :title=>'Sample Article',
+  :provider=>'pocket',
+  :content => 'Sample Content'
+)
+puts "Created article: #{article.id.to_s}"

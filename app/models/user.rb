@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:pocket, :evernote]
   has_one :pocket_account
   has_one :evernote_account
-  has_many :article
+  has_many :articles
 
   def add_pocket_account(omniauth)
     token = omniauth.credentials.token
