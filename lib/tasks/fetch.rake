@@ -27,7 +27,7 @@ namespace :fetch do
       # Iterate over the result and insert to db
       result.each do |key, article|
         puts article['resolved_url']
-        tags = article['tags'].map { |name,tag| tag}.join ',' if article['tags']
+        tags = article['tags'].map { |tag,fields| tag}.join ',' if article['tags']
         begin
           ActiveRecord::Base.transaction do
             article = user.articles.create(
@@ -40,7 +40,7 @@ namespace :fetch do
               :content => article['excerpt'],
             )
           end
-          Resque.enqueue ReadabilityJob, article.id unless article.id.nil?
+          Resque.enqueue ExtractorJob, article.id unless article.id.nil?
           # TODO: Throw error if article save failed, or if resque enqueue failed
 
         # Catching any non-unique entry error. Uniqueness check in user_id + url
