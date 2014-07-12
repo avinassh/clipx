@@ -11,21 +11,23 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'bootstrap-sass'
-gem 'devise'  #Handles user authentication
+gem 'devise'  # Handles user authentication
 gem 'haml-rails'
-gem 'high_voltage'  #Static Pages like about
+gem 'high_voltage'  # Static Pages like about
 
-#Omniauth strategeies
-gem 'omniauth-pocket' #Connect a pocket account
-gem 'omniauth-evernote' #Connect a evernote account
+# Omniauth strategeies
+gem 'omniauth-pocket' # Connect a pocket account
+gem 'omniauth-evernote' # Connect a evernote account
 
-#API connections
-gem 'getpocket' #Talk to the pocket API
-gem 'evernote_oauth' #Talk to the evernote API
+# API connections
+gem 'getpocket' # Talk to the pocket API
+gem 'evernote_oauth' # Talk to the evernote API
+gem 'readability_parser', :git => 'https://github.com/captn3m0/readability_parser.git'
 
 #Resque related
-gem "resque"  #Background Jobs
-gem "resque-scheduler"  #Schedule background jobs
+gem "resque"  # Background Jobs
+gem "resque-scheduler"  # Schedule background jobs
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]
