@@ -27,6 +27,7 @@ gem 'readability_parser', :git => 'https://github.com/captn3m0/readability_parse
 #Resque related
 gem "resque"  # Background Jobs
 gem "resque-scheduler"  # Schedule background jobs
+gem 'resque-web', require: 'resque_web' # Web UI for our resque jobs
 
 group :development do
   gem 'better_errors'
