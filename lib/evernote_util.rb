@@ -8,8 +8,8 @@ class EvernoteUtil < Evernote::EDAM::NoteStore::NoteStore::Client
     return body
   end
 
-  #search for a notebook with a given name
-  #Returns a notebook object
+  # search for a notebook with a given name
+  # Returns a notebook object
   def find_notebook(name)
     notebooks = self.listNotebooks(@token)
     notebooks.each do |notebook|
@@ -24,10 +24,10 @@ class EvernoteUtil < Evernote::EDAM::NoteStore::NoteStore::Client
     create_notebook name
   end
 
-  #Creates a new notebook
-  #Returns the notebook object, not just the guid
+  # Creates a new notebook
+  # Returns the notebook object, not just the guid
   def create_notebook(name)
-    #Taken from http://stackoverflow.com/questions/5631055/not-able-to-create-notebook-and-transfer-files-in-evernote
+    # Taken from http://stackoverflow.com/questions/5631055/not-able-to-create-notebook-and-transfer-files-in-evernote
     notebook = Evernote::EDAM::Type::Notebook.new()
     notebook.name = name
     self.createNotebook @token, notebook
@@ -42,14 +42,14 @@ class EvernoteUtil < Evernote::EDAM::NoteStore::NoteStore::Client
   end
 
   def initialize(notestore_url, token)
-    #Evernote API rubbish
+    # Evernote API rubbish
     noteStoreTransport = Thrift::HTTPClientTransport.new notestore_url
     noteStoreProtocol = Thrift::BinaryProtocol.new noteStoreTransport
 
-    #Save the token with the notestore so we can re-use it without passing it around
+    # Save the token with the notestore so we can re-use it without passing it around
     @token = token
 
-    #Call the parent constructor with just the protocol
+    # Call the parent constructor with just the protocol
     super noteStoreProtocol
   end
   def token

@@ -3,9 +3,9 @@ require 'test_helper'
 class EvernoteUtilTest < ActiveSupport::TestCase
   
   def setup
-    #Load the fixture
+    # Load the fixture
     @account = evernote_account :default
-    #Create an evernote lib client
+    # Create an evernote lib client
     @client = EvernoteUtil.new @account.notestore_url, @account.token
   end
 
@@ -42,10 +42,10 @@ class EvernoteUtilTest < ActiveSupport::TestCase
     #This is the default notebook in evernote
     name = 'First Notebook'
 
-    #Expect a UserException to be raised
+    # Expect a UserException to be raised
     e = assert_raises(Evernote::EDAM::Error::EDAMUserException) { @client.create_notebook name }
 
-    #ErrorCode 10 is for data conflict, which means we are trying to re-create an existing notebook
+    # ErrorCode 10 is for data conflict, which means we are trying to re-create an existing notebook
     assert_equal e.errorCode, 10, "Incorrect errorCode"
     assert_equal e.parameter, "Notebook.name", "Exception raised in incorrect parameter (name expected)"
   end
