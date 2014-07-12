@@ -33,9 +33,10 @@ class EvernoteUtil < Evernote::EDAM::NoteStore::NoteStore::Client
     self.createNotebook @token, notebook
   end
 
-  def create_note(title, content, notebook_guid)
+  def create_note(title, content, tags, notebook_guid)
     note = Evernote::EDAM::Type::Note.new
     note.title = title
+    note.tagNames = tags.split(',')
     note.content = self.class.textToENML content
     note.notebookGuid = notebook_guid if notebook_guid
     self.createNote @token, note
