@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
@@ -65,6 +66,9 @@ class ArticlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
+      if @article.user_id != current_user.id
+        render :text => 'Not Authorised'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
