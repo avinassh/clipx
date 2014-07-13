@@ -14,6 +14,9 @@ gem 'bootstrap-sass'
 gem 'devise'  # Handles user authentication
 gem 'haml-rails'
 gem 'high_voltage'  # Static Pages like about
+gem 'tidy_ffi' # html to valid xhtml
+gem 'loofah' # HTML sanitization & enml conversions
+gem 'libxml-ruby' # XML validation using DTD
 
 # Omniauth strategeies
 gem 'omniauth-pocket' # Connect a pocket account
@@ -24,7 +27,7 @@ gem 'getpocket' # Talk to the pocket API
 gem 'evernote_oauth' # Talk to the evernote API
 gem 'readability_parser', :git => 'https://github.com/captn3m0/readability_parser.git'
 
-#Resque related
+# Resque related
 gem "resque"  # Background Jobs
 gem "resque-scheduler"  # Schedule background jobs
 gem 'resque-web', require: 'resque_web' # Web UI for our resque jobs
