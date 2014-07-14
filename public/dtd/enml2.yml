@@ -61,6 +61,10 @@ allowed_tags:
   - ul
   - var
   - xmp
+  # This is custom hack in our enml markup
+  # because Nokogiri reports plaintext as a node of type text
+  # which is removed if this is not added here
+  - text
 disallowed_tags:
   - applet
   - base
