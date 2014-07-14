@@ -64,7 +64,8 @@ class ArticlesControllerTest < ActionController::TestCase
 
     # For :update
     patch :update, id: @article, article: { user_id: wrong_user_id, status: 'invalid' }
-    assert_equal Article.last.user_id, users(:default).id
-    assert_equal Article.last.status, 'fetched'
+    @article.reload
+    assert_equal @article.user_id, users(:default).id
+    assert_equal @article.status, 'fetched'
   end
 end
