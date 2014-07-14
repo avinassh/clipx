@@ -4,6 +4,19 @@ This assumes familiarity with rails and ruby. Rest all should be documented.
 
 Rails does most of the heavy lifting, so I will be documenting any additional gems we are using.
 
+
+##Quick Start
+Run the following commands to get started with clipx development:
+
+    # Install all development gems
+    bundle install --without production
+    # Start web server and all resque tasks, including scheduler
+    foreman start -f Procfile.dev
+    # Run all tests
+    spring rake test:all
+    # Run only the common tests
+    spring rake test
+
 ##Authentication
 We're using the excellent devise gem for authentication, along with omniauth for any third-party ingegrations. Thirdy-party logins are not supported, and omniauth is only used to "save the access tokens" received via oauth.
 
