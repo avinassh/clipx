@@ -4,9 +4,8 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   # GET /articles.json
-  # TODO: Make this admin-only
   def index
-    @articles = Article.all
+    @articles = Article.where(user_id: current_user.id)
   end
 
   # GET /articles/1
