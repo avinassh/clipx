@@ -35,19 +35,38 @@ class EvernoteUtil < Evernote::EDAM::NoteStore::NoteStore::Client
     self.createNotebook @token, notebook
   end
 
-  def create_note(title, content, tags, notebook_guid)
+  # title - plain text
+  # content - text or html (will be converted to enml)
+  # notebook_guid - valid guid of the notebook in which to add this tag
+  # tags - an array of tag names (String) that must be added to this tag
+  def create_note(title, content, notebook_guid, tags, url, source = nil)
     note = Evernote::EDAM::Type::Note.new
     note.title = title
     note.tagNames = tags.split(',')
     note.content = self.class.HtmlToENML content
-    self.class.validate_enml note.content
+    note.tagNames = tags.map &:squish # Tag names may not begin or end with a space. 
     note.notebookGuid = notebook_guid if notebook_guid
+    note.attributes = self.create_note_attribute url, source
+    self.class.validate_enml note.content
+    
     begin
       self.createNote @token, note
     rescue Evernote::EDAM::Error::EDAMUserException => e
       # Because the EDAMUserException has no proper message
       raise "Invalid ENML: #{e.parameter}"
+      puts e.to_json
     end
+  end
+
+  # TODO: Add author info here as well
+  # Creates an attributes object for use with note creation
+  # Also adds a source and source app, so user can see which app created this
+  def create_note_attribute(url, source)
+    attribute = Evernote::EDAM::Type::NoteAttributes.new
+    attribute.sourceURL = url
+    attribute.source = source ? "ClipX - via #{source}" : 'ClipX'
+    attribute.sourceApplication = 'ClipX'
+    attribute
   end
 
   def initialize(notestore_url, token)
