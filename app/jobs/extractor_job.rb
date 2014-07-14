@@ -1,8 +1,6 @@
 ReadabilityParser.api_token = Rails.application.secrets.readability_parser_key
 
 class ExtractorJob
-  # TODO: Rename this job to ExtractorJob
-  # as we may shift from readability in the future
   @queue = :extractor
   def self.perform(article_id)
     puts "Running extractor job"

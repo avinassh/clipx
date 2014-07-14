@@ -35,13 +35,11 @@ namespace :fetch do
               :title=>article['given_title'],
               :provider=>'pocket',
               :tags=>tags,
-              #TODO: Insert tags which we get from pocket as well
               #TODO: Check for any images that pocket gave us
               :content => article['excerpt'],
             )
           end
           Resque.enqueue ExtractorJob, article.id unless article.id.nil?
-          # TODO: Throw error if article save failed, or if resque enqueue failed
 
         # Catching any non-unique entry error. Uniqueness check in user_id + url
         rescue ActiveRecord::RecordNotUnique
