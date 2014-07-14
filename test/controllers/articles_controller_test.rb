@@ -22,7 +22,7 @@ class ArticlesControllerTest < ActionController::TestCase
 
   test "should create article" do
     assert_difference('Article.count') do
-      post :create, article: { content: @article.content, heading: @article.heading, image: @article.image, provider: @article.provider, tags: @article.tags, title: @article.title, url: @article.url}
+      post :create, article: { content: @article.content, image: @article.image, provider: @article.provider, tags: @article.tags, title: @article.title, url: @article.url}
     end
 
     assert_redirected_to article_path(assigns(:article))
@@ -39,7 +39,7 @@ class ArticlesControllerTest < ActionController::TestCase
   end
 
   test "should update article" do
-    patch :update, id: @article, article: { content: 'New content', heading: @article.heading, image: @article.image, provider: @article.provider, tags: @article.tags, title: @article.title, url: @article.url }
+    patch :update, id: @article, article: { content: 'New content', image: @article.image, provider: @article.provider, tags: @article.tags, title: @article.title, url: @article.url }
     assert_redirected_to article_path(assigns(:article))
     @article.reload
     assert_equal 'New content', @article.content
@@ -58,7 +58,7 @@ class ArticlesControllerTest < ActionController::TestCase
 
     # We handle both cases because they have different implementations
     # For :create
-    post :create, article: { content: @article.content, heading: @article.heading, image: @article.image, provider: @article.provider, tags: @article.tags, title: @article.title, url: @article.url, user_id: wrong_user_id, status: "invallid"}
+    post :create, article: { content: @article.content, image: @article.image, provider: @article.provider, tags: @article.tags, title: @article.title, url: @article.url, user_id: wrong_user_id, status: "invallid"}
     assert_equal Article.last.user_id, users(:default).id
     assert_equal Article.last.status, 'fetched'
 

@@ -57,6 +57,8 @@ GEM
       execjs
     coffee-script-source (1.7.1)
     debug_inspector (0.0.2)
+    default_value_for (3.0.0.1)
+      activerecord (>= 3.2.0, < 5.0)
     devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -260,6 +262,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   coffee-rails (~> 4.0.0)
+  default_value_for (~> 3.0.0)
   devise
   evernote_oauth
   getpocket

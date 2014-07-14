@@ -28,7 +28,6 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
-    @article.status = 'fetched'
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
@@ -69,12 +68,10 @@ class ArticlesController < ApplicationController
     def set_article
       @article = Article.find(params[:id])
       raise 'Not Authorized' unless @article.user_id == current_user.id
-      #Default status
-      @article.status ||= 'fetched'
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:url, :title, :heading, :content, :image, :tags, :provider)
+      params.require(:article).permit(:url, :title, :content, :image, :tags, :provider)
     end
 end
