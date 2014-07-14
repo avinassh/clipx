@@ -1,5 +1,5 @@
 class EvernoteScrubber < Loofah::Scrubber
-  @@dtd = YAML.load_file Rails.root.join('public','dtd','enml2.yml')
+  @@dtd = YAML.load_file Rails.root.join('lib','assets','enml2.yml')
 
   def initialize
     @direction = :bottom_up

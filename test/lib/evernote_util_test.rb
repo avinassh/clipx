@@ -19,11 +19,10 @@ class EvernoteUtilTest < ActiveSupport::TestCase
   end
 
   test 'find_notebook' do
-    name = 'ClipX'
+    name = 'First Notebook'
     notebook = @client.find_notebook name
     assert_not_nil notebook, "find notebook failed"
     assert_equal name, notebook.name, "Incorrect notebook returned"
-    assert_equal @account.notebook_guid, notebook.guid, "Incorrect notebook returned"
   end
 
   # This testcase is commented out because evernote has a limit of 250 notebooks
@@ -55,7 +54,6 @@ class EvernoteUtilTest < ActiveSupport::TestCase
     name = 'ClipX'
     notebook = @client.find_or_create_notebook name
     assert_equal name, notebook.name, 'Incorrect notebook returned'
-    assert_equal @account.notebook_guid, notebook.guid, "Incorrect notebook GUID returned"
   end
 
 end

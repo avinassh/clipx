@@ -3,7 +3,7 @@ require 'loofah'
 require 'xml'
 class EvernoteUtil < Evernote::EDAM::NoteStore::NoteStore::Client
   @@scrubber = EvernoteScrubber.new
-  @@dtd = XML::Dtd.new File.read Rails.root.join('public', 'dtd','enml2.dtd')
+  @@dtd = XML::Dtd.new File.read Rails.root.join('lib','assets','enml2.dtd')
   def self.textToENML(text)
     # TODO: Convert to heredoc
     body  = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
