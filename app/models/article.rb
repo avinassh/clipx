@@ -7,7 +7,7 @@ class Article < ActiveRecord::Base
     evernote_account = self.user.evernote_account
     evernote_client = EvernoteUtil.new evernote_account.notestore_url, evernote_account.token
     begin
-      evernote_client.create_note self.heading, self.content, evernote_account.notebook_guid, self.tags.split(','), self.url, self.provider
+      evernote_client.create_note self.title, self.content, evernote_account.notebook_guid, self.tags.split(','), self.url, self.provider
     rescue Evernote::EDAM::Error::EDAMNotFoundException => e
       # The notebook might have been deleted, so re-recreate it
       notebook = evernote_client.create_notebook 'ClipX'
