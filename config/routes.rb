@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   end
 
   # Resque Web-UI
-  mount ResqueWeb::Engine => "/resque"
+  mount ResqueController => "/resque"
 end

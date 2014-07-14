@@ -39,4 +39,7 @@ class User < ActiveRecord::Base
     )
   end
 
+  def admin?
+    self.email == Rails.application.secrets.admin_email
+  end
 end
