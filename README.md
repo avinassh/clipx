@@ -1,6 +1,8 @@
 #Clipx
 
-ClipX is a rails application for content syndication. More details about the application can be found in Architecture.md. Setup is just `bundle install`, followed by `rails s` to start the rails server. 
+[![Build Status](https://www.codeship.io/projects/043e24b0-ed41-0131-5536-2e128a408349/status?branch=master)](https://www.codeship.io/projects/26657)
+
+ClipX is a rails application for content syndication. More details about the application can be found in Architecture.md. Setup is just `bundle install`, followed by `rails s` to start the rails server. More detailed development instructions are in `HACKING.md`.
 
 #Boilerplate
 
