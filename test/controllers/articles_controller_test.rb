@@ -33,6 +33,14 @@ class ArticlesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should show all articles" do
+    article_count = Article.count(conditions: { user_id: users(:default) })
+    get :index, { :format => :json }
+    assert_response :success
+    articles = JSON.parse(@response.body)
+    assert_equal article_count, articles.count
+  end
+
   test "should get edit" do
     get :edit, id: @article
     assert_response :success
