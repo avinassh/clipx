@@ -7,4 +7,4 @@ pocket_fetch:
   rails_envs: 
     - development
     - production
-    - staging
+    - test

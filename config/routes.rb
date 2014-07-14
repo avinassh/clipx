@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   # TODO: Shift to a controller for authentication (resque)
   # Current solution gives a 404 as route doesn't get defined
+  # http://stackoverflow.com/a/7284523/368328
   constraints is_admin do
     mount ResqueWeb::Engine, :at => "/resque"
   end
