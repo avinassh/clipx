@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class ArticlesControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
   setup do
     @article = articles(:one)
+    @article.url = 'http://stackoverflow.com/questions/4169971/adding-validates-uniqueness-of-to-a-model-fails-functional-tests'
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in users(:default)
   end
 
   test "should get index" do
