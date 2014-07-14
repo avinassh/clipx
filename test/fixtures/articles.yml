@@ -5,8 +5,8 @@ one:
   title: Sample Title
   heading: Sample Heading
   content: Sample Content
-  image: 
+  image: Blank
   tags: "hello, world"
-  provider: pocket
-  status: fetched
+  provider: test
   user_id: 1
+  status: fetched

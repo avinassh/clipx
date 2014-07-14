@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   # GET /articles.json
+  # TODO: Make this admin-only
   def index
     @articles = Article.all
   end
@@ -26,7 +27,8 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(article_params)
-
+    @article.user_id = current_user.id
+    @article.status = 'fetched'
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
@@ -66,13 +68,13 @@ class ArticlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
-      if @article.user_id != current_user.id
-        render :text => 'Not Authorised'
-      end
+      raise 'Not Authorized' unless @article.user_id == current_user.id
+      #Default status
+      @article.status ||= 'fetched'
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:url, :title, :heading, :content, :image, :tags, :provider, :status, :user_id)
+      params.require(:article).permit(:url, :title, :heading, :content, :image, :tags, :provider)
     end
 end
