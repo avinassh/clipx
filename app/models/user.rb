@@ -42,4 +42,21 @@ class User < ActiveRecord::Base
   def admin?
     self.email == Rails.application.secrets.admin_email
   end
+
+  # Returns all integrated accounts available to the user
+  # type - Class to filter this account list against
+  #        You may so far pass only PublisherAccount to this option 
+  def accounts(type=AbstractAccount)
+    # See http://stackoverflow.com/questions/3371518/in-ruby-is-there-an-array-method-that-combines-select-and-map/17703276#17703276
+    # for why reduce was used here
+    self.class.reflect_on_all_associations(:has_one).reduce([]) do |result, association|
+      result.push self.send association.name if association.klass < type
+      result
+    end
+  end
+
+  # Returns all PublisherAccounts belonging to the user
+  def publishers
+    self.accounts PublisherAccount
+  end
 end

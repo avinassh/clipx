@@ -1,3 +1,2 @@
-class PocketAccount < ActiveRecord::Base
-  belongs_to :user
+class PocketAccount < AbstractAccount
 end
