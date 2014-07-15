@@ -5,10 +5,11 @@ class EvernoteUtil < Evernote::EDAM::NoteStore::NoteStore::Client
   @@scrubber = EvernoteScrubber.new
   @@dtd = XML::Dtd.new File.read Rails.root.join('lib','assets','enml2.dtd')
   def self.textToENML(text)
-    # TODO: Convert to heredoc
-    body  = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-    body += "<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">\n"
-    body += "<en-note>#{text}</en-note>"
+    body  = <<END
+<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">
+<en-note>#{text}</en-note>
+END
     return body
   end
 
