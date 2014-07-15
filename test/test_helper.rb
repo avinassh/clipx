@@ -1,3 +1,4 @@
+require 'ostruct'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
@@ -7,4 +8,10 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  @@omniauth_pocket = OpenStruct.new ({
+    :credentials=>OpenStruct.new({
+      :token => "Invalid Token"
+    }),
+    :uid=>'sm'
+  })
 end

@@ -8,15 +8,6 @@ class User < ActiveRecord::Base
   has_one :evernote_account
   has_many :articles
 
-  def add_pocket_account(omniauth)
-    token = omniauth.credentials.token
-    pocket_username = omniauth.uid
-
-    # Delete the current pocket account associated
-    self.pocket_account.delete if self.pocket_account
-    self.create_pocket_account ({:token=>token, :last_fetched=>Time.now.to_i, :username=>pocket_username})
-  end
-
   def add_evernote_account(omniauth)
     
     # Get required variables from omniauth
@@ -37,6 +28,23 @@ class User < ActiveRecord::Base
       :notestore_url => notestore_url,
       :notebook_guid => notebook_guid
     )
+  end
+
+  def add_account(provider, omniauth)
+    # The user model should not be concerned about parsing the omniauth hash
+    # which can vary for different accounts
+    account_class = (provider + '_account').camelize.constantize
+    account = account_class.create_from_omniauth omniauth
+
+    # ActiveRecord automatically adds these methods
+    # for every association, which we are calling
+    # note that assignment is part of the method name
+    # this is equivalent to eval ("self.#{provider}_account = account")
+    assignment_symbol = (provider + '_account=').to_sym
+    self.send assignment_symbol, account
+
+    # Return a copy of the just created account as well
+    account
   end
 
   def admin?
