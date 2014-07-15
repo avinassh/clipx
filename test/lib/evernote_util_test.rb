@@ -4,7 +4,7 @@ class EvernoteUtilTest < ActiveSupport::TestCase
   
   def setup
     # Load the fixture
-    @account = evernote_account :default
+    @account = evernote_accounts :default
     # Create an evernote lib client
     @client = EvernoteUtil.new @account.notestore_url, @account.token
   end
