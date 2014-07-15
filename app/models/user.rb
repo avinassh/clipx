@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:pocket, :evernote]
-  has_one :pocket_account
-  has_one :evernote_account
-  has_many :articles
+  has_one :pocket_account, :dependent => :destroy
+  has_one :evernote_account, :dependent => :destroy
+  has_many :articles, :dependent => :destroy
 
   def add_evernote_account(omniauth)
     
