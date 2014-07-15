@@ -1,35 +1,23 @@
 %h1 Listing articles
 
+= link_to 'New Article', new_article_path
+
 %table
   %tr
-    %th Url
-    %th Title
-    %th Heading
-    %th Content
-    %th Image
+    %th Visit Webpage
     %th Tags
     %th Provider
     %th Status
-    %th User
-    %th
-    %th
-    %th
+    %th Show
+    %th Edit
+    %th Delete
 
   - @articles.each do |article|
     %tr
-      %td= article.url
-      %td= article.title
-      %td= article.heading
-      %td= article.content
-      %td= article.image
+      %td= link_to article.title, article.url
       %td= article.tags
       %td= article.provider
       %td= article.status
-      %td= article.user_id
       %td= link_to 'Show', article
       %td= link_to 'Edit', edit_article_path(article)
-      %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Article', new_article_path
+      %td= link_to 'Delete', article, :method => :delete, :data => { :confirm => 'Are you sure?' }

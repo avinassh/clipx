@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   # Article-related
   resources :articles
-  get 'article/:id/publish/:provider' => 'article#publish'
 
   # Devise auto-generates routes for various authentication-related methods
   # see `rake routes` for more details
