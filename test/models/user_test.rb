@@ -27,7 +27,7 @@ class UserTest < ActiveSupport::TestCase
   test 'should add test account' do
     # Make sure the user didn't have a pocket integration already
     assert_nil @second_user.pocket_account
-    account = @second_user.add_account 'pocket', @@omniauth_pocket
+    account = @second_user.add_account 'pocket', self.omniauth.pocket
     assert_equal account.user, @second_user
     assert_equal @second_user.pocket_account, account
   end
@@ -35,7 +35,7 @@ class UserTest < ActiveSupport::TestCase
   test 'should remove account before attaching a new one' do
     # Make sure the user didn't have a pocket integration already
     assert @user.pocket_account
-    account = @user.add_account 'pocket', @@omniauth_pocket
+    account = @user.add_account 'pocket', self.omniauth.pocket
     assert_equal account.user, @user
     assert_equal @user.pocket_account, account
   end

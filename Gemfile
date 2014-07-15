@@ -16,6 +16,7 @@ gem 'haml-rails'
 gem 'high_voltage'  # Static Pages like about
 gem "default_value_for", "~> 3.0.0" # Specify default values for AR in migrations
 gem 'foreman' # Single task runner for all our processes
+
 # Evernote Util class requires these
 gem 'tidy_ffi' # html to valid xhtml
 gem 'loofah' # HTML sanitization & enml conversions
@@ -42,6 +43,11 @@ group :development do
   gem 'quiet_assets'
   gem 'rails_layout'
 end
+
+group :test do
+  gem 'mocha'
+end
+
 group :production do
   gem 'unicorn'
 end
