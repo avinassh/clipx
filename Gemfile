@@ -22,6 +22,7 @@ gem 'sanitize' # HTML sanitization before displaying article content
 # New relic to monitor app performance
 # Used in all environments except test
 gem 'newrelic_rpm'
+gem 'foreman' # Single task runner for all our processes
 
 # Evernote Util class requires these
 gem 'tidy_ffi' # html to valid xhtml
@@ -45,6 +46,10 @@ gem 'octokit'
 gem "resque"  # Background Jobs
 gem "resque-scheduler"  # Schedule background jobs
 gem 'resque-web', require: 'resque_web' # Web UI for our resque jobs
+
+# Elastic search gems for searching and indexing
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 
 group :development do
   gem 'better_errors'
