@@ -79,4 +79,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  
+  # For some reason, the redis client prefers to use the ENV variable
+  ENV.delete 'REDIS_URL'
 end
