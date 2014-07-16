@@ -13,7 +13,7 @@ Article.delete_all
 article = user.articles.create(
   :url=>'http://getpocket.com/developer/docs/v3/retrieve',
   :title=>'Sample Article',
-  :heading=>'Sample Heading'
+  :heading=>'Sample Heading',
   :provider=>'pocket',
   :content => 'Sample Content',
   :tags => 'hello, world'
