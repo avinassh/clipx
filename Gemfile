@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '4.1.4'
-gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -15,7 +14,6 @@ gem 'devise'  # Handles user authentication
 gem 'haml-rails'
 gem 'high_voltage'  # Static Pages like about
 gem "default_value_for", "~> 3.0.0" # Specify default values for AR in migrations
-gem 'foreman' # Single task runner for all our processes
 
 # Evernote Util class requires these
 gem 'tidy_ffi' # html to valid xhtml
@@ -29,6 +27,8 @@ gem 'omniauth-evernote' # Connect a evernote account
 # API connections
 gem 'getpocket' # Talk to the pocket API
 gem 'evernote_oauth' # Talk to the evernote API
+# Fork of the readability parser API
+# with updated dependencies
 gem 'readability_parser', :git => 'https://github.com/captn3m0/readability_parser.git'
 
 # Resque related
@@ -42,12 +42,17 @@ group :development do
   gem 'html2haml'
   gem 'quiet_assets'
   gem 'rails_layout'
-end
-
-group :test do
+  # Sqlite is only loaded in development
+  gem 'sqlite3'
+  # This is for stubbing and mocking support in tests
   gem 'mocha'
 end
 
 group :production do
+  # This is our web server for production, recommended by both heroku and github
   gem 'unicorn'
+  # Redirects all rails output to stdout, recommended by heroku
+  gem 'rails_12factor'
+  # Sqlite3 causes issues with dokku due to heroku-buildpacks not supporting it
+  gem 'pg'
 end
