@@ -6,21 +6,30 @@ Never worry about another clipping service going down. We're here to save your c
 
 ##List of Services
 
-1. Cron Job  (Fetch URLs for pocket accounts)
+1. Fetch Articles from various sources
+    - Runs using Resque
+    - Optionally as a Rake task as well
 2. Web Service
     - Show status of each article
     - Show logs of each fetch and push request
-    - Link status to each account (pocket/evernote)
+    - Link status to each account
+    - Also create/edit/view article
 3. Database
-    - Users (pocket id + evernote id + access tokens for both)
-    - Article (URL, Title, Content, Status)
-4. Cron Job (post to evernote)
+    - Users (EMail, Name (and more))
+    - Article (URL, Title, Content, Status, Provider)
+        + Belongs to User
+    - Various Integration Accounts
+        + Belongs to User
+4. Extractor Service
+    - Fetches an article content
+5. Publisher Service
+    - Publishes an article to any source
 
 ##Options
 1. Make as separate services talking to each other via the database or some job agent
 2. Make the entire thing as a giant rails app
     - Cron jobs will be converted to queues in rails
-    - Can't deploy on heroku any more
+    - Can't deploy on free heroku any more (single dyno)
     - Should be a good learning experience
 
 ##Things to think about
@@ -47,7 +56,7 @@ Never worry about another clipping service going down. We're here to save your c
 - EMail (send us an email)
 - Readability (add a new URL)
 
-##Stores
+##Publishers
 - Evernote
 - Dropbox
 - Skydrive/Box
@@ -58,7 +67,7 @@ Never worry about another clipping service going down. We're here to save your c
 Filters are optional elements that control the trigger of each service. For eg, you may only want to archive the `#clipx` tag on pocket.
 
 ##Search
-All articles are indexed and saved in elasticsearch, most probably. A user can search through all of *his* content easily.
+All articles are indexed and saved in elasticsearch, most probably. A user can search through all of *his* content easily. All content is tagged as well.
 
 ##Images & Media
 Currently, we just archive html text, and don't worry about images or videos or making them available offline.

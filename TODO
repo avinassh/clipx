@@ -1,1 +1,6 @@
 # TODO - Shift to Tomdoc
+# TODO - Shift to SSL using Dokku
+# TODO - Use dokku-supervisord-logging for running all foreman processes
+# TODO - Use an exception notifier and handler
+# TODO - Use a JS exception catcher as well
+# TODO - Decide on a log collection method as well

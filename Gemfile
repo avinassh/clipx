@@ -8,7 +8,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'devise'  # Handles user authentication
 gem 'haml-rails'
@@ -46,6 +45,8 @@ group :development do
   gem 'sqlite3'
   # This is for stubbing and mocking support in tests
   gem 'mocha'
+  # Faster environment loads
+  gem 'spring'
 end
 
 group :production do
