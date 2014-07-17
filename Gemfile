@@ -47,10 +47,16 @@ group :development do
   gem 'rails_layout'
   # Sqlite is only loaded in development
   gem 'sqlite3'
-  # This is for stubbing and mocking support in tests
-  gem 'mocha'
   # Faster environment loads
   gem 'spring'
+end
+
+# These are not installed on the production server
+group :test do
+  # Simple coverage reports for our tests
+  gem 'simplecov'
+  # This is for stubbing and mocking support in tests
+  gem 'mocha'
 end
 
 group :production do
