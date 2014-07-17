@@ -14,6 +14,10 @@ gem 'haml-rails'
 gem 'high_voltage'  # Static Pages like about
 gem "default_value_for", "~> 3.0.0" # Specify default values for AR in migrations
 
+# New relic to monitor app performance
+# Used in all environments except test
+gem 'newrelic_rpm'
+
 # Evernote Util class requires these
 gem 'tidy_ffi' # html to valid xhtml
 gem 'loofah' # HTML sanitization & enml conversions

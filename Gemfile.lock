@@ -123,6 +123,7 @@ GEM
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    newrelic_rpm (3.9.0.229)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     oauth (0.4.7)
@@ -283,6 +284,7 @@ DEPENDENCIES
   libxml-ruby
   loofah
   mocha
+  newrelic_rpm
   omniauth-evernote
   omniauth-pocket
   pg
