@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class EvernoteUtilTest < ActiveSupport::TestCase
-  
+
   def setup
     # Load the fixture
     @account = evernote_accounts :default
@@ -56,4 +56,8 @@ class EvernoteUtilTest < ActiveSupport::TestCase
     assert_equal name, notebook.name, 'Incorrect notebook returned'
   end
 
+  test 'validate html entities' do
+    assert EvernoteUtil.validate_enml EvernoteUtil.textToENML '&nbsp;'
+    assert_not EvernoteUtil.validate_enml EvernoteUtil.textToENML '&hello;'
+  end
 end

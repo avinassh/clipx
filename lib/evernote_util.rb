@@ -4,6 +4,12 @@ require 'xml'
 class EvernoteUtil < Evernote::EDAM::NoteStore::NoteStore::Client
   @@scrubber = EvernoteScrubber.new
   @@dtd = XML::Dtd.new File.read Rails.root.join('lib','assets','enml2.dtd')
+  @@dtd_yaml = YAML.load_file Rails.root.join('lib','assets','enml2.yml')
+
+  # Converts a given text to ENML
+  # By wrapping it in en-note XML tag
+  # Does not care about validation
+  # Returns unvalidated ENML string
   def self.textToENML(text)
     body  = <<END
 <?xml version=\"1.0\" encoding=\"UTF-8\"?>
@@ -32,7 +38,6 @@ END
   # Creates a new notebook
   # Returns the notebook object, not just the guid
   def create_notebook(name)
-    # Taken from http://stackoverflow.com/questions/5631055/not-able-to-create-notebook-and-transfer-files-in-evernote
     notebook = Evernote::EDAM::Type::Notebook.new()
     notebook.name = name
     self.createNotebook @token, notebook
@@ -42,6 +47,7 @@ END
   # content - text or html (will be converted to enml)
   # notebook_guid - valid guid of the notebook in which to add this tag
   # tags - an array of tag names (String) that must be added to this tag
+  # Raises Exceptions::ENMLValidationError if the validation fails
   def create_note(title, content, notebook_guid, tags, url, source = nil)
     note = Evernote::EDAM::Type::Note.new
     note.title = title
@@ -50,8 +56,7 @@ END
     note.tagNames = tags.map &:squish # Tag names may not begin or end with a space. 
     note.notebookGuid = notebook_guid if notebook_guid
     note.attributes = self.create_note_attribute url, source
-    raise 'ENML Validation failed' unless self.class.validate_enml note.content
-    
+    raise Exceptions::ENMLValidationError unless self.class.validate_enml note.content
     begin
       self.createNote @token, note
     rescue Evernote::EDAM::Error::EDAMUserException => e
@@ -120,10 +125,18 @@ END
     Loofah.fragment(enml).scrub!(@@scrubber).to_s
   end
 
-
+  # Validates the enml
+  # enml - string representation of enml
+  # Returns true or false, depending on the validation result
   def self.validate_enml(enml)
+    XML::Error.set_handler do |err|
+      if err.code == XML::Error::ERROR_CODE_MAP.key("XML_WAR_UNDECLARED_ENTITY")
+        # Sample error = "Error: Entity 'hello' not defined at :3."
+        entity = err.to_s.split("'")[1]
+        return false unless @@dtd_yaml['valid_entities'].include? entity
+      end
+    end
     enml_document = XML::Document.string enml
     enml_document.validate @@dtd
   end
-
 end
