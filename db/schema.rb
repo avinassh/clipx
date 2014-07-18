@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140712125518) do
+ActiveRecord::Schema.define(version: 20140718174834) do
 
   create_table "articles", force: true do |t|
-    t.string   "url"
-    t.string   "title"
-    t.string   "heading"
-    t.string   "content"
-    t.string   "image"
-    t.string   "tags"
+    t.text     "url"
+    t.text     "title"
+    t.text     "heading"
+    t.text     "content"
+    t.text     "image"
+    t.text     "tags"
     t.string   "provider"
     t.string   "status",     default: "fetched"
     t.datetime "created_at"
