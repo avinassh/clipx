@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718174834) do
+ActiveRecord::Schema.define(version: 20140719185136) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "articles", force: true do |t|
     t.text     "url"
@@ -27,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140718174834) do
     t.integer  "user_id"
   end
 
-  add_index "articles", ["url", "user_id"], name: "index_articles_on_url_and_user_id", unique: true
+  add_index "articles", ["url", "user_id"], name: "index_articles_on_url_and_user_id", unique: true, using: :btree
 
   create_table "evernote_accounts", force: true do |t|
     t.string  "token"
@@ -38,8 +41,8 @@ ActiveRecord::Schema.define(version: 20140718174834) do
     t.string  "notebook_guid"
   end
 
-  add_index "evernote_accounts", ["user_id"], name: "index_evernote_accounts_on_user_id"
-  add_index "evernote_accounts", ["username"], name: "index_evernote_accounts_on_username", unique: true
+  add_index "evernote_accounts", ["user_id"], name: "index_evernote_accounts_on_user_id", using: :btree
+  add_index "evernote_accounts", ["username"], name: "index_evernote_accounts_on_username", unique: true, using: :btree
 
   create_table "pocket_accounts", force: true do |t|
     t.string  "token"
@@ -48,8 +51,21 @@ ActiveRecord::Schema.define(version: 20140718174834) do
     t.integer "user_id"
   end
 
-  add_index "pocket_accounts", ["user_id"], name: "index_pocket_accounts_on_user_id"
-  add_index "pocket_accounts", ["username"], name: "index_pocket_accounts_on_username", unique: true
+  add_index "pocket_accounts", ["user_id"], name: "index_pocket_accounts_on_user_id", using: :btree
+  add_index "pocket_accounts", ["username"], name: "index_pocket_accounts_on_username", unique: true, using: :btree
+
+  create_table "twitter_accounts", force: true do |t|
+    t.integer "uid"
+    t.string  "username"
+    t.string  "token"
+    t.string  "secret"
+    t.integer "last_fetched_id"
+    t.integer "last_fetched"
+    t.integer "user_id"
+  end
+
+  add_index "twitter_accounts", ["uid"], name: "index_twitter_accounts_on_uid", unique: true, using: :btree
+  add_index "twitter_accounts", ["user_id"], name: "index_twitter_accounts_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -67,7 +83,7 @@ ActiveRecord::Schema.define(version: 20140718174834) do
     t.string   "name"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

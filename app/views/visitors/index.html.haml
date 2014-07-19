@@ -13,6 +13,20 @@
     - else
       = link_to "Integrate with pocket", user_omniauth_authorize_path(:pocket)
   %div
+    Twitter Integration : 
+    - if current_user.twitter_account
+      %span
+        = current_user.twitter_account.username
+        Last fetched
+        - if current_user.twitter_account.last_fetched.nil?
+          Never
+        - else
+          = time_ago_in_words Time.at(current_user.twitter_account.last_fetched).to_datetime
+        ago
+        = link_to "(Re-integrate)", user_omniauth_authorize_path(:twitter)
+    - else
+      = link_to "Integrate with twitter", user_omniauth_authorize_path(:twitter)
+  %div
     Evernote Integration :
     - if current_user.evernote_account
       %span

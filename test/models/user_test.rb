@@ -7,9 +7,9 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'should return accounts' do
-    assert @user.accounts.length > 0
+    assert @user.accounts.length > 0, "Number of connected accounts found: #{@user.accounts}"
     @user.accounts.each do |account|
-      assert account.class < AbstractAccount
+      assert account.class < AbstractAccount, "Account does not inherit from AbstractAccount"
     end
   end
 

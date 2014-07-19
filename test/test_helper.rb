@@ -35,6 +35,16 @@ class ActiveSupport::TestCase
             }
           }
         }
+      },
+      twitter: {
+        uid: "21758503",
+        info: {
+          nickname: "sm"
+        },
+        credentials: {
+          token: "21758502-YRnKh42Jim9XQVhIfphhKkA6lH84COdn0dmwAGFmK",
+          secret: "uMsCvtKb0HNf9tYkOS0rRC6UhTLj8mBW5sn7aX9Ah5IsY"
+        }
       }
     })
   end

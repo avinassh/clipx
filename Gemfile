@@ -25,8 +25,9 @@ gem 'loofah' # HTML sanitization & enml conversions
 gem 'libxml-ruby' # XML validation using DTD
 
 # Omniauth strategeies
-gem 'omniauth-pocket' # Connect a pocket account
-gem 'omniauth-evernote' # Connect a evernote account
+gem 'omniauth-pocket'
+gem 'omniauth-evernote'
+gem 'omniauth-twitter'
 
 # API connections
 gem 'getpocket' # Talk to the pocket API
