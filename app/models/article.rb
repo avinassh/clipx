@@ -8,7 +8,7 @@ class Article < ActiveRecord::Base
     evernote_client = EvernoteUtil.new evernote_account.notestore_url, evernote_account.token
     begin
       # tags might be nil, if not split by comma
-      tags = self.tags ? self.tags.split(',') : Array()
+      tags = self.tags ? self.tags.split(',') : Array.new
       evernote_client.create_note self.title, self.content, evernote_account.notebook_guid, tags, self.url, self.provider
     rescue Evernote::EDAM::Error::EDAMNotFoundException => e
       # The notebook might have been deleted, so re-recreate it
