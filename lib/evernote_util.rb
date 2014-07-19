@@ -1,6 +1,8 @@
 require 'evernote-thrift'
 require 'loofah'
 require 'xml'
+require 'tidy_ffi'
+TidyFFI.library_path = Rails.root.join('lib','tidy','libtidy.so').to_s
 class EvernoteUtil < Evernote::EDAM::NoteStore::NoteStore::Client
   @@scrubber = EvernoteScrubber.new
   @@dtd = XML::Dtd.new File.read Rails.root.join('lib','assets','enml2.dtd')
@@ -90,7 +92,6 @@ END
   end
   
   def self.fix_tags(html)
-    require 'tidy_ffi'
     tidy = TidyFFI::Tidy.new(html)
     tidy.options.output_xhtml = true
     tidy.options.char_encoding = 'utf8'

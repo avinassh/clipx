@@ -60,4 +60,9 @@ class EvernoteUtilTest < ActiveSupport::TestCase
     assert EvernoteUtil.validate_enml EvernoteUtil.textToENML '&nbsp;'
     assert_not EvernoteUtil.validate_enml EvernoteUtil.textToENML '&hello;'
   end
+
+  test 'fix_tags should be working' do
+    original = "<br>"
+    assert "<br />", EvernoteUtil.fix_tags(original)
+  end
 end
