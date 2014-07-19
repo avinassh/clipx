@@ -1,12 +1,256 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   url: http://www.google.com/
   title: Sample Title
   heading: Sample Heading
-  content: Sample Content
   image: Blank
   tags: "hello, world"
   provider: test
   user_id: 1
   status: fetched
+  content: |
+    <div><article class="markdown-body entry-content">
+    <p>(Or &#x201C;HTML and JavaScript for Web 3.0 all-in-one&#x201D;.)</p>
+    <p><a href="https://travis-ci.org/gocircuit/escher/escher"><img src="https://camo.githubusercontent.com/e977065ddf44a6062e81c6acc01dbff827e6e2f8/68747470733a2f2f7472617669732d63692e6f72672f676f636972637569742f6573636865722e7376673f6272616e63683d6d6173746572" alt="Build Status"></a> <a href="https://godoc.org/github.com/gocircuit/escher"><img src="https://camo.githubusercontent.com/65104dd6f9547200e80e10ed03445428d120c737/68747470733a2f2f676f646f632e6f72672f6769746875622e636f6d2f676f636972637569742f6573636865723f7374617475732e706e67" alt="GoDoc"></a></p>
+    <p><a href="https://github.com/gocircuit/escher/raw/master/misc/img/main.png" target="_blank"><img src="https://github.com/gocircuit/escher/raw/master/misc/img/main.png" alt="Escher in language"></a></p>
+    <p>Escher is a progrmaming language for everything. It can naturally represent both process and data,
+    while being simpler than a calculator grammar.</p>
+    <p>Escher is a language for building intelligent real-time translations between the semantics of
+    different physical devices accessible through chains or networks of digital or electrical technologies.</p>
+    <p>In Escher, you can program from first- and third-person point-of-view at the same time. (Just like
+    Physics is particles and waves at the same time.)</p>
+    <p>Some of the application domains of Escher are:</p>
+    <ul class="task-list">
+    <li>Definition and generation of synthetic worlds governed by Physical laws, as in Augmented Reality and the Gaming Industry,</li>
+    <li>General purpose concurrent and distributed programming, such as Internet services and cloud applications,</li>
+    <li>Relational data representation, as in databases and CAD file formats,</li>
+    <li>Real-time control loops, as in Robotics,</li>
+    <li>Numerical and scientific computation pipelines,</li>
+    <li>Anything that filters information from some input sources, in real-time, and sends a transformed form to output devices!</li>
+    </ul><p>An early &#x201C;proposal&#x201D; for the design of Escher, 
+    <a href="http://www.maymounkov.org/memex/abstract">Escher: A black-and-white language for data and process representation</a>,
+    might be an informative (but not necessary) read for the theoretically inclined.</p>
+    <h2>
+    <a name="user-content-attention-non-turing-mathematics-ahead" class="anchor" href="https://github.com/gocircuit/escher#attention-non-turing-mathematics-ahead"></a>Attention: Non-Turing Mathematics ahead</h2>
+    <p>The Escher abstraction of the world is NOT Turing-compatible: From the point-of-view of an
+    Escher program, there is no input and output: There are only emergences and disappearances of events.</p>
+    <p>Escher presents the world in a model called <a href="http://arxiv.org/pdf/math/9705225.pdf">Choiceless Computation</a>,
+    introduced by the legendary Mathematicians
+    <a href="http://www.math.lsa.umich.edu/%7Eablass/">Andreas Blass</a>, 
+    <a href="http://research.microsoft.com/en-us/um/people/gurevich/">Yuri Gurevich</a> and 
+    <a href="http://shelah.logic.at/">Sharon Shelah</a>, and introduced to me by the dare-to-be-great, soon-to-be-legendary,
+    although-already-should-be <a href="http://research.nii.ac.jp/%7Erossman/">Benjamin Rossman</a>.</p>
+    <p>Understanding the difference between Turing Machines and Choiceless Computation,
+    while not entirely necessary, sheds much light on the profound difference between 
+    Escher and other languages. The relevant publications are quoted in the 
+    <a href="https://github.com/gocircuit/escher#bibliography">bibliography</a> at the end.</p>
+    <h3>
+    <a name="user-content-choiceless-programming-by-example" class="anchor" href="https://github.com/gocircuit/escher#choiceless-programming-by-example"></a>Choiceless programming by example</h3>
+    <p>The following puzzle demonstrates choiceless programming via a simple relatable high-school 
+    Math puzzle:</p>
+    <blockquote>
+    <p>Four beer caps are placed on the corners of a square table with arbitrary
+    orientations. There is a robot on the table that acts upon three commands:
+    (a) &#x201C;flip a corner cap&#x201D;,
+    (b) &#x201C;flip two diagonal caps&#x201D; and
+    (c) &#x201C;flip two caps along a side&#x201D;</p>
+    <p>Upon action there is no guarantee as to which corner, diagonal
+    or side, respectively, the robot will choose to flip.</p>
+    <p>Devise a sequence of commands that forces the robot to turn all caps in a
+    con&#xFB01;guration where they all have the same orientation.</p>
+    <p>Can you devise a sequence that ensures they all face up? Down?</p>
+    </blockquote>
+    <p>I was introduced to the notion of choiceless programming via this puzzle by Benjamin Rossman.</p>
+    <h2>
+    <a name="user-content-quick-start" class="anchor" href="https://github.com/gocircuit/escher#quick-start"></a>Quick start</h2>
+    <p>Escher is an interpreter, comprising a singular executable binary. It can be built for Linux, Darwin and Windows.</p>
+    <p>Given that the <a href="http://golang.org">Go Language</a> compiler is <a href="http://golang.org/doc/install">installed</a>,
+    you can build and install the circuit binary with one line:</p>
+    <pre><code>go install github.com/gocircuit/escher/escher
+    </code></pre>
+    <p>Go to the Escher base directory and run one of the tutorials</p>
+    <pre><code>escher -src tutorial/helloworld
+    </code></pre>
+    <h2>
+    <a name="user-content-meaning" class="anchor" href="https://github.com/gocircuit/escher#meaning"></a>Meaning</h2>
+    <p>An Escher program is a collection of interconnected <em>reflexes</em>. A reflex, the only
+    abstraction in Escher, represents an independent computing entity that can interact
+    with the &#x201C;outside world&#x201D; through a collection of named <em>valves</em>.</p>
+    <p>The illustration below shows a reflex, named <code>AND</code>, which has three valves,
+    named <code>X</code>, <code>Y</code> and <code>XandY</code>, respectively.</p>
+    <p><a href="https://github.com/gocircuit/escher/raw/master/misc/img/design.png" target="_blank"><img src="https://github.com/gocircuit/escher/raw/master/misc/img/design.png" alt="An Escher reflex"></a></p>
+    <p>A reflex can be implemented in another technology (currently only the 
+    <a href="http://golang.org">Go Programming Language</a> is supported
+    as an external technology) or it can be composed of pre-existing reflexes.
+    The former is called a <em>gate</em>, while the latter is called a <em>circuit</em>.</p>
+    <h2>
+    <a name="user-content-gates" class="anchor" href="https://github.com/gocircuit/escher#gates"></a>Gates</h2>
+    <p>Gates are reflexes whose behvaior is implemented in a the underlying technology,
+    which is the <a href="http://golang.org/doc/effective_go.html">Go language</a>, at the moment.
+    From Escher's point-of-view (POV), gates are simply
+    reflexes that broker values. But from the user's POV, gates can have &#x201C;side-effects&#x201D;
+    in the &#x201C;outside world&#x201D; and, vice-versa, the outside world can prompt reflexive
+    action, such as sending out a message over a valve asynchronously.</p>
+    <p>To implement your own gates, take example from the <a href="https://github.com/gocircuit/escher/blob/master/faculty/basic/reason.go">implementation of the 
+    &#x201C;reasoning&#x201D; gate</a> (discussed later).</p>
+    <h2>
+    <a name="user-content-circuits" class="anchor" href="https://github.com/gocircuit/escher#circuits"></a>Circuits</h2>
+    <p>Circuits are a composition of a few reflexes. </p>
+    <p><a href="https://github.com/gocircuit/escher/raw/master/misc/img/circuit.png" target="_blank"><img src="https://github.com/gocircuit/escher/raw/master/misc/img/circuit.png" alt="Boolean &#x201C;not and&#x201D;"></a></p>
+    <p>Programmatically, this circuit is defined by the code:</p>
+    <pre><code>nand {
+    // reflex recollections
+    and and
+    not not
+    // connections
+    not.X = and.XandY
+    XnandY = not.notX
+    and.X = X
+    and.Y = Y
+    }
+    </code></pre>
+    <h2>
+    <a name="user-content-syntax-files-and-faculties-directories-structure" class="anchor" href="https://github.com/gocircuit/escher#syntax-files-and-faculties-directories-structure"></a>Syntax (files) and faculties (directories) structure</h2>
+    <p>Escher programs are designated by a local root directory and all its descendants.
+    That directory is represented as the root in the faculty namespace inside the Escher programming environment.</p>
+    <p>Escher compiles all files ending in <code>.escher</code> and attaches the resulting circuit designs
+    to the namespaces corresponding to their directory parents.</p>
+    <p>To materialize (i.e. run) an Escher program, use the mandatory <code>-src</code> flag to specify the path to the local 
+    source directory.</p>
+    <pre><code>escher -src tutorial/helloworld
+    </code></pre>
+    <p>Escher materializes the circuit design named <code>main</code> in the root source directory, e.g.</p>
+    <pre><code>// The main circuit is always the one materialized (executed).
+    main {
+    s @show
+    s = "&#xA1;Hello, world!"
+    }
+    </code></pre>
+    <h2>
+    <a name="user-content-basic-gates" class="anchor" href="https://github.com/gocircuit/escher#basic-gates"></a>Basic gates</h2>
+    <p>By default, the Escher environment provides a basic set of gates (a basis),
+    which enable a rich (infinite) language of possibilities in data manipulation.</p>
+    <p>Collectively, they are data (concept) and transformation (sentence) gates</p>
+    <p>These gates are not part of Escher's semantics. They are merely an optional
+    library&#x2014;a playground for beginners. Users can implement their own gates
+    for data and transformation.</p>
+    <p>The basis reference below is nearly entirely visual. You will notice that the
+    visual language follows a prescribed format.</p>
+    <h3>
+    <a name="user-content-data-noun-gates" class="anchor" href="https://github.com/gocircuit/escher#data-noun-gates"></a>Data (Noun) gates</h3>
+    <p>On blank slate, there is &#x201C;nothing to do&#x201D;&#x2014;so to speak. For this reason,
+    we have a collection of gates which are effectively &#x201C;springs&#x201D; of objects.</p>
+    <p>Some produce integers, some floats, some complex numbers, some strings.
+    These are familiar types.</p>
+    <p>There is one gate that produces &#x201C;trees&#x201D;. Trees are the basic type of
+    &#x201C;weavable&#x201D; (or mutable) knowledge. (In fact, the other types are not
+    necessary but we throw them in for convenience.)</p>
+    <p>In the illustration below, the syntax of the respective gate design is displayed
+    as their name (white on black).</p>
+    <p><a href="https://github.com/gocircuit/escher/raw/master/misc/img/impress.png" target="_blank"><img src="https://github.com/gocircuit/escher/raw/master/misc/img/impress.png" alt="Impression of the mind"></a></p>
+    <h3>
+    <a name="user-content-combinator-manipulator-gates" class="anchor" href="https://github.com/gocircuit/escher#combinator-manipulator-gates"></a>Combinator (Manipulator) gates</h3>
+    <p><a href="https://github.com/gocircuit/escher/raw/master/misc/img/combine.png" target="_blank"><img src="https://github.com/gocircuit/escher/raw/master/misc/img/combine.png" alt="Grammar manipulation gates"></a></p>
+    <h3>
+    <a name="user-content-arithmetic-applying-gates" class="anchor" href="https://github.com/gocircuit/escher#arithmetic-applying-gates"></a>Arithmetic (Applying) gates</h3>
+    <p>Arithmetic gates are a sufficient basis of operations that enables
+    algorithmic manipulation of the types string, int, float and complex.
+    Coming soon.</p>
+    <h3>
+    <a name="user-content-tree-of-knowledge-and-the-reason-learning-gate" class="anchor" href="https://github.com/gocircuit/escher#tree-of-knowledge-and-the-reason-learning-gate"></a>Tree of Knowledge and the Reason (Learning) Gate</h3>
+    <p>You will notice, one of the basic data gates allows the creation of a struct-like object.
+    This is called a <em>tree</em>. It is a novel data structure, described in detail in
+    <a href="http://research.microsoft.com/pubs/65409/scopedlabels.pdf">&#x201C;Extensible records with scoped labels&#x201D; by Daan Leijen</a>.</p>
+    <p>These data structures are &#x201C;built out&#x201D; and &#x201C;trimmed down&#x201D; using three elegant
+    reflection methods, described in the above publication. </p>
+    <p>Escher embodies all three in one gate, whose main purpose is to manipulate
+    the contents of trees. This is the <em>Reason Gate</em>, illustrated below.</p>
+    <p>The following three illustrations show the same gate design, but under different
+    orientations of the event streams. In all valid cases, the relationship
+    between the valve values shown examplifies the effect of the gate.</p>
+    <p><a href="https://github.com/gocircuit/escher/raw/master/misc/img/generalization.png" target="_blank"><img src="https://github.com/gocircuit/escher/raw/master/misc/img/generalization.png" alt="Generalization"></a></p>
+    <blockquote>
+    <p>Belief for the current state of the world, combined with a new observation, results in
+    a theory.</p>
+    </blockquote>
+    <p><a href="https://github.com/gocircuit/escher/raw/master/misc/img/explanation.png" target="_blank"><img src="https://github.com/gocircuit/escher/raw/master/misc/img/explanation.png" alt="Explanation"></a></p>
+    <blockquote>
+    <p>A theory of observations, which explains (includes) an observation at hand, explains
+    the observation only to a belief consisting of the theory without the observation.</p>
+    </blockquote>
+    <p><a href="https://github.com/gocircuit/escher/raw/master/misc/img/prediction.png" target="_blank"><img src="https://github.com/gocircuit/escher/raw/master/misc/img/prediction.png" alt="Prediction"></a></p>
+    <blockquote>
+    <p>When a belief of the state of the world is combined with a theory that is bigger,
+    the conjectured difference must be found in a new observation.</p>
+    </blockquote>
+    <h2>
+    <a name="user-content-duality-gates" class="anchor" href="https://github.com/gocircuit/escher#duality-gates"></a>Duality gates</h2>
+    <p>Duality gates are the boundary between Escher semantics and the outside world. 
+    They are the I/O with the outside. Such gates affect some external technology
+    when prompted through Escher in a certain way. Alternatively, such gates might
+    fire an Escher message on one of its valves, in response to an asynchronous
+    events occuring in an external technology.</p>
+    <h3>
+    <a name="user-content-variation-surprise-and-causation-action-gates" class="anchor" href="https://github.com/gocircuit/escher#variation-surprise-and-causation-action-gates"></a>Variation (Surprise) and Causation (Action) gates</h3>
+    <p><a href="https://github.com/gocircuit/escher/raw/master/misc/img/seeshow.png" target="_blank"><img src="https://github.com/gocircuit/escher/raw/master/misc/img/seeshow.png" alt="See and Show"></a></p>
+    <p>For instance, with the gates we've seen so far, one might construct the following higher-level
+    circuit abstraction for an I/O device, which is controlled by a defered logic:</p>
+    <p><a href="https://github.com/gocircuit/escher/raw/master/misc/img/io.png" target="_blank"><img src="https://github.com/gocircuit/escher/raw/master/misc/img/io.png" alt="I/O device"></a></p>
+    <p>And the respective source code:</p>
+    <pre><code>io_device {
+    // recalls
+    in see
+    out show
+    swtch switch
+    // matchings
+    Logic = swtch.Socialize
+    in.Sensation = swtch.Hear
+    out.Action = swtch.Speak
+    }
+    </code></pre>
+    <h2>
+    <a name="user-content-introspective-and-extrospective-gates" class="anchor" href="https://github.com/gocircuit/escher#introspective-and-extrospective-gates"></a>Introspective and extrospective gates</h2>
+    <p>This special type of gates fulfills the complementary functions of
+    constructing new circuit designs &#x201C;dynamically&#x201D; (akin to &#x201C;reflection&#x201D; in other languages),
+    and materializing (i.e. executing) these designs. Coming soon.</p>
+    <h3>
+    <a name="user-content-the-julia-exploiting-gate" class="anchor" href="https://github.com/gocircuit/escher#the-julia-exploiting-gate"></a>The Julia (Exploiting) Gate</h3>
+    <p>Coming soon.</p>
+    <h3>
+    <a name="user-content-the-escher-einstein-gate-multiple-foci-over-space-and-time" class="anchor" href="https://github.com/gocircuit/escher#the-escher-einstein-gate-multiple-foci-over-space-and-time">Test</a>The Escher (Einstein) Gate: Multiple foci over Space and Time</h3>
+    <p>Coming soon.</p>
+    <h2>
+    <a name="user-content-the-future-collapsed" class="anchor" href="https://github.com/gocircuit/escher#the-future-collapsed"></a>The future collapsed</h2>
+    <p>I envision that in the natural course of action at play, &#x2026; (more coming soon).</p>
+    <h2>
+    <a name="user-content-and" class="anchor" href="https://github.com/gocircuit/escher#and"></a>And&#x2026;</h2>
+    <p>&#x2026;if you think this language is <code>#KingOfMetaphor</code>, please, tweet to
+    <a href="https://twitter.com/StephenAtHome">@StephenAtHome</a> that his title of
+    <code>#KingOfMetaphor</code> is being challenged, in a good way. Tweet
+    that <code>@escherio</code> wants a <code>#ColbertBump</code>. The <code>#ColbertFaculty</code> is coming soon.</p>
+    <p>&#x2026;if you want to inquire about the science behind <a href="https://twitter.com/escherio">@escherio</a>, tweet to me,
+    Petar <a href="https://twitter.com/maymounkov">@maymounkov</a>.</p>
+    <p>Or, simply lose yourself in the 
+    <a href="http://www.maymounkov.org/chomsky-valiant-algorithmic-mirror">initial</a>
+    <a href="http://www.maymounkov.org/puzzle-test-turing-test">thoughts</a> that
+    led to the invention of Escher.</p>
+    <p>To me, Escher is a language for weaving dreams: It makes imagination real. Help me make it tangible, so it can be shared.</p>
+    <h2>
+    <a name="user-content-sponsors-and-credits" class="anchor" href="https://github.com/gocircuit/escher#sponsors-and-credits"></a>Sponsors and credits</h2>
+    <h2>
+    <a name="user-content-bibliography" class="anchor" href="https://github.com/gocircuit/escher#bibliography"></a>Bibliography</h2>
+    <ul class="task-list">
+    <li><p><a href="http://arxiv.org/pdf/math/9705225.pdf">Choiceless Polynomial Time</a>, 
+    <a href="http://www.math.lsa.umich.edu/%7Eablass/">Andreas Blass</a>, 
+    <a href="http://research.microsoft.com/en-us/um/people/gurevich/">Yuri Gurevich</a> and 
+    <a href="http://shelah.logic.at/">Saharon Shelah</a>, published by Shelah Office
+    on <a href="http://arxiv.org/abs/math/9705225">arXiv</a>, 1997</p></li>
+    <li><p><a href="http://link.springer.com/chapter/10.1007%2F3-540-44622-2_6">Choiceless Polynomial Time Logic: Inability to Express</a>,
+    <a href="http://shelah.logic.at/">Saharon Shelah</a>, Springer Lecture Notes in Computer Science, Volume 1862, 2000, pp. 72-125</p></li>
+    <li><p><a href="http://www.amazon.com/Circuits-Mind-Leslie-G-Valiant/dp/0195126688">Circuits of the Mind</a>, Leslie Valiant, 2000</p></li>
+    <li>
+    <a href="http://www.probablyapproximatelycorrect.com/">Probably Approximately Correct, 53589083</a>, Leslie Valiant, 2013</li>
+    </ul><p>Additional, enlightening reading includes:</p>
+    <p>People working in this or unsuspectingly related areas:</p>
+    </article>
+    </div>

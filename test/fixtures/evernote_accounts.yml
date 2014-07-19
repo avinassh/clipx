@@ -1,6 +1,6 @@
 default:
   token: S=s1:U=8eff7:E=14e8034f322:C=1472883c4b0:P=81:A=captn3m0-5624:V=2:H=f634ee8129603f3839fdaf0417fe7baf
   notestore_url: https://sandbox.evernote.com/shard/s1/notestore
-  notebook_guid: 7222483e-4f13-4ff7-a6b1-b9a417989094
+  notebook_guid: 77dec4c1-0971-4cdd-b5e4-e02abfdb9a18
   user_id: 1
   username: n3m0

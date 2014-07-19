@@ -32,5 +32,11 @@ class EvernoteScrubber < Loofah::Scrubber
       node.before node.children
       node.remove
     end
+
+    # Remove any empty tags
+    if node.inner_text == ''
+      node.remove
+      Loofah::Scrubber::STOP
+    end
   end
 end

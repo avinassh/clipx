@@ -53,7 +53,7 @@ END
   def create_note(title, content, notebook_guid, tags, url, source = nil)
     note = Evernote::EDAM::Type::Note.new
     note.title = title
-    note.tagNames = tags.split(',')
+    note.tagNames = tags
     note.content = self.class.HtmlToENML content
     note.tagNames = tags.map &:squish # Tag names may not begin or end with a space. 
     note.notebookGuid = notebook_guid if notebook_guid
@@ -99,6 +99,7 @@ END
     tidy.options.indent = 1
     tidy.options.show_warnings = true
     tidy.options.new_blocklevel_tags = 'article, heading'
+    tidy.options.anchor_as_name = false
     doc = tidy.clean
     if doc.nil?
       puts tidy.errors
@@ -117,7 +118,7 @@ END
     # All methods return strings, not xml entities
     # sanitize returns valid xhtml enml, which must be wrapped inside en-note
     # to work
-    self.textToENML self.fix_tags self.sanitize html
+    self.textToENML self.fix_tags self.sanitize html 
   end
 
   # Takes in invalid enml and

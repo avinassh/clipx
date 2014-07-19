@@ -115,6 +115,7 @@ disallowed_attributes:
   - dynsrc
   - tabindex
   - score
+  - name
 valid_url_schemes:
   - http
   - https

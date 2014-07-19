@@ -63,6 +63,6 @@ class EvernoteUtilTest < ActiveSupport::TestCase
 
   test 'fix_tags should be working' do
     original = "<br>"
-    assert "<br />", EvernoteUtil.fix_tags(original)
+    assert_equal "<br />", EvernoteUtil.fix_tags(original).squish
   end
 end
