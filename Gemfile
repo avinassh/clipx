@@ -58,6 +58,8 @@ group :test do
   gem 'mocha'
   # This is needed on the CI server for pushing coverage reports to dropbox
   gem 'dbox'
+  # CodeClimate
+  gem "codeclimate-test-reporter"
 end
 
 group :production do
