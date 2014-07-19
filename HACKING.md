@@ -53,4 +53,23 @@ However, to run the complete test suite (which is run on codeship), use:
 This will execute all tests, including those in our custom API libraries (which may be slow).
 
 ##Database
-We provide a basic database seed, which you can import by calling `rake db:seed`, if it was not already seeded (most db commands do this already).
+We provide a basic database seed, which you can import by calling `rake db:seed`, if it was not already seeded (most db commands do this already). We have shifted to using pg in development as well. Instructions to setup database:
+
+```sh
+sudo apt-get install postgresql libpq-dev phppgadmin pgadmin3
+# Now update /etc/postgresql/9.3/main/pg_hba.conf 
+# to read 
+# local all all md5
+# instead of 
+# local all all peer
+# to enable password auth
+sudo su postgres -c psql
+# Rest of the commands in the psql shell
+create user clipx  with password 'clipx_db';
+create database clipx_development;
+create database clipx_test;
+grant all privileges on database clipx_development to clipx;
+grant all privileges on database clipx_test to clipx;
+\q
+sudo service postgresql restart
+```

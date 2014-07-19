@@ -5,6 +5,7 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'pg'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
@@ -45,8 +46,6 @@ group :development do
   gem 'html2haml'
   gem 'quiet_assets'
   gem 'rails_layout'
-  # Sqlite is only loaded in development
-  gem 'sqlite3'
   # Faster environment loads
   gem 'spring'
 end
@@ -64,6 +63,4 @@ group :production do
   gem 'unicorn'
   # Redirects all rails output to stdout, recommended by heroku
   gem 'rails_12factor'
-  # Sqlite3 causes issues with dokku due to heroku-buildpacks not supporting it
-  gem 'pg'
 end
