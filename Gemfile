@@ -56,6 +56,8 @@ group :test do
   gem 'simplecov'
   # This is for stubbing and mocking support in tests
   gem 'mocha'
+  # This is needed on the CI server for pushing coverage reports to dropbox
+  gem 'dbox'
 end
 
 group :production do
