@@ -9,7 +9,8 @@ class Article < ActiveRecord::Base
     begin
       # tags might be nil, if not split by comma
       tags = self.tags ? self.tags.split(',') : Array.new
-      evernote_client.create_note self.title, self.content, evernote_account.notebook_guid, tags, self.url, self.provider
+      title = self.title.squish.empty?  ? self.heading : self.title
+      evernote_client.create_note title, self.content, evernote_account.notebook_guid, tags, self.url, self.provider
     rescue Evernote::EDAM::Error::EDAMNotFoundException => e
       # The notebook might have been deleted, so re-recreate it
       notebook = evernote_client.find_or_create_notebook 'ClipX'
