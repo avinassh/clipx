@@ -1,4 +1,6 @@
 require "resque_web"
+# Workaround as per https://github.com/resque/resque-web/issues/29
+ResqueWeb::Engine.eager_load!
 Rails.application.routes.draw do
   # Home Page
   root to: 'visitors#index'
