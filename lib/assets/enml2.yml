@@ -86,7 +86,8 @@ disallowed_tags:
   - input
   - isindex
   - label
-  - layer,
+  - layer
+  - 
   - legend
   - link
   - marquee
@@ -374,3 +375,9 @@ valid_entities:
   - lsaquo
   - rsaquo
   - euro
+valid_void_tags:
+  - area
+  - br
+  - col
+  - hr
+  - img

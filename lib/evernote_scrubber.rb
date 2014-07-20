@@ -34,7 +34,7 @@ class EvernoteScrubber < Loofah::Scrubber
     end
 
     # Remove any empty tags
-    if node.inner_text == ''
+    if node.inner_text == '' and @@dtd['valid_void_tags'].exclude? node.name
       node.remove
       Loofah::Scrubber::STOP
     end

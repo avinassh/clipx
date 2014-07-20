@@ -28,6 +28,10 @@ class EvernoteScrubberTest < ActiveSupport::TestCase
     assert_equal "", self.scrub("<a></a>")
   end
 
+  test 'should not remove empty void tags' do
+    assert_equal "<br><img>", self.scrub("<br><img>")
+  end
+    
   def scrub(html)
     Loofah.fragment(html).scrub!(@scrubber).to_s
   end
