@@ -2,9 +2,12 @@ class PublishJob
   # This job calls various publish services
   @queue = :publish
   def self.perform(article_id)
-    # TODO: Publisher class structure
-    puts "Running publish job"
     article = Article.find(article_id)
-    article.publish
+    publisher_accounts = article.user.publishers
+    publisher_accounts.each do |account|
+      # We create a new publisher service instance
+      # and use that to publish the article
+      account.publisher.publish account, article
+    end
   end
 end

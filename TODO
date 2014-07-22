@@ -3,7 +3,6 @@
 
  - Shift to Tomdoc
  - Shift to SSL using Dokku
- - Use dokku-supervisord-logging for running all foreman processes
  - Use an exception notifier and handler
  - Use a JS exception catcher as well
  - Decide on a log collection method as well

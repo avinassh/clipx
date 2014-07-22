@@ -18,4 +18,9 @@ class EvernoteAccountTest < ActiveSupport::TestCase
       account.save!
     end
   end
+
+  test 'should return its publishing service' do
+    PublisherClass = @account.publisher
+    assert PublisherClass < PublisherService
+  end
 end
