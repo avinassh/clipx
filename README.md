@@ -21,7 +21,7 @@ provided by the [RailsApps Project](http://railsapps.github.io/).
 - Job Queue System: Resque
 - Cron System: Resque-Scheduler
 - Database: postgresql
-- 
+
 ##Development
 - Web Server: Webrick
 
@@ -31,4 +31,3 @@ provided by the [RailsApps Project](http://railsapps.github.io/).
 ##Third party integrations
 - Code Coverage is provided via simplecov and code climate.
 - Application performance is monitored via new relic.
-- 
