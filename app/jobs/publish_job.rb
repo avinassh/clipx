@@ -5,7 +5,7 @@ class PublishJob
     article = Article.find(article_id)
     publisher_accounts = article.user.publishers
     publisher_accounts.each do |account|
-      # We create a new publisher service instance
+      # We get the class using account.publisher
       # and use that to publish the article
       account.publisher.publish account, article
     end

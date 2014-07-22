@@ -29,8 +29,4 @@ class EvernoteAccount < PublisherAccount
     evernote = EvernoteUtil.new self.notestore_url, self.token
     evernote.find_or_create_notebook('ClipX').guid
   end
-
-  def publisher
-    EvernotePublisher
-  end
 end
