@@ -31,9 +31,7 @@ gem 'omniauth-evernote' # Connect a evernote account
 # API connections
 gem 'getpocket' # Talk to the pocket API
 gem 'evernote_oauth' # Talk to the evernote API
-# Fork of the readability parser API
-# with updated dependencies
-gem 'readability_parser', :git => 'https://github.com/captn3m0/readability_parser.git'
+gem 'readability_parser' # Talk to Readability Parser API
 
 # Resque related
 gem "resque"  # Background Jobs
