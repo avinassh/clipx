@@ -1,15 +1,6 @@
 %p#notice= notice
 
 %p
-  %b Url:
-  = @article.url
-%p
-  %b Title:
-  = @article.title
-%p
-  %b Heading:
-  = @article.heading
-%p
   %b Image:
   = @article.image
 %p
@@ -31,6 +22,8 @@
 
 %hr
 
-%h1= @article.title
+%h1
+  = link_to @article.title_or_heading, @article.url
+
 
 != @article.content
