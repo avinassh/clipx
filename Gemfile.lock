@@ -36,6 +36,9 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
+    bourbon (3.2.3)
+      sass (~> 3.2)
+      thor
     builder (3.2.2)
     codeclimate-test-reporter (0.3.0)
       simplecov (>= 0.7.1, < 1.0.0)
@@ -115,6 +118,9 @@ GEM
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    neat (1.5.1)
+      bourbon (>= 3.1)
+      sass (~> 3.2.19)
     newrelic_rpm (3.9.0.229)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
@@ -273,6 +279,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  bourbon
   codeclimate-test-reporter
   coffee-rails (~> 4.0.0)
   default_value_for (~> 3.0.0)
@@ -287,6 +294,7 @@ DEPENDENCIES
   libxml-ruby
   loofah
   mocha
+  neat
   newrelic_rpm
   omniauth-evernote
   omniauth-pocket
