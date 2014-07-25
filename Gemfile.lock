@@ -141,6 +141,9 @@ GEM
       evernote-thrift
       multi_json (~> 1.0)
       omniauth-oauth (~> 1.0)
+    omniauth-github (1.1.2)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.1)
     omniauth-oauth (1.0.1)
       oauth
       omniauth (~> 1.0)
@@ -312,7 +315,9 @@ DEPENDENCIES
   loofah
   mocha
   newrelic_rpm
+  octokit
   omniauth-evernote
+  omniauth-github
   omniauth-pocket
   omniauth-twitter
   pg

@@ -28,6 +28,7 @@ gem 'libxml-ruby' # XML validation using DTD
 gem 'omniauth-pocket'
 gem 'omniauth-evernote'
 gem 'omniauth-twitter'
+gem 'omniauth-github'
 
 # API connections
 gem 'getpocket'

@@ -232,9 +232,9 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :pocket, Rails.application.secrets.pocket_key
   config.omniauth :evernote, Rails.application.secrets.evernote_key, Rails.application.secrets.evernote_secret,
-    :client_options => { :site => 'https://sandbox.evernote.com' }  
+    :client_options => { :site => 'https://sandbox.evernote.com' }
   config.omniauth :twitter, Rails.application.secrets.twitter_key, Rails.application.secrets.twitter_secret
-
+  config.omniauth :github, Rails.application.secrets.github_key, Rails.application.secrets.github_secret
   OmniAuth.config.on_failure = Proc.new { |env|
     OmniAuth::FailureEndpoint.new(env).redirect_to_failure
   }

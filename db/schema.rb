@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140725112626) do
+ActiveRecord::Schema.define(version: 20140725132859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 20140725112626) do
 
   add_index "evernote_accounts", ["user_id"], name: "index_evernote_accounts_on_user_id", using: :btree
   add_index "evernote_accounts", ["username"], name: "index_evernote_accounts_on_username", unique: true, using: :btree
+
+  create_table "github_accounts", force: true do |t|
+    t.integer "uid"
+    t.string  "username"
+    t.string  "token"
+    t.integer "last_fetched"
+    t.integer "user_id"
+  end
+
+  add_index "github_accounts", ["uid"], name: "index_github_accounts_on_uid", unique: true, using: :btree
+  add_index "github_accounts", ["user_id"], name: "index_github_accounts_on_user_id", using: :btree
 
   create_table "pocket_accounts", force: true do |t|
     t.string  "token"
