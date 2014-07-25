@@ -1,0 +1,2 @@
+class PublisherService
+end
