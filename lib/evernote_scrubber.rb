@@ -34,7 +34,11 @@ class EvernoteScrubber < Loofah::Scrubber
     end
 
     # Remove any empty tags
-    if node.inner_text == ''
+    # This basically makes sure that a tag is considered empty iff
+    # 1. Its inner text is blank
+    # 2. It has no children
+    # 3. Its not a valid void tag (like br,hr)
+    if node.inner_text == '' and @@dtd['valid_void_tags'].exclude? node.name and node.children.size == 0
       node.remove
       Loofah::Scrubber::STOP
     end

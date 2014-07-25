@@ -65,4 +65,10 @@ class EvernoteUtilTest < ActiveSupport::TestCase
     original = "<br>"
     assert_equal "<br />", EvernoteUtil.fix_tags(original).squish
   end
+
+  test 'enml conversion should not delete void tags' do
+    html = articles(:one).content
+    enml = EvernoteUtil.HtmlToENML(html)
+    assert_not_nil enml.index "<img"
+  end
 end

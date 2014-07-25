@@ -20,11 +20,14 @@ provided by the [RailsApps Project](http://railsapps.github.io/).
 - Authentication: Devise
 - Job Queue System: Resque
 - Cron System: Resque-Scheduler
+- Database: postgresql
 
 ##Development
-- Database: SQLite
 - Web Server: Webrick
 
 ##Production
-- Database: Postgres
 - Web Server: Unicorn
+
+##Third party integrations
+- Code Coverage is provided via simplecov and code climate.
+- Application performance is monitored via new relic.
