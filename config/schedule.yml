@@ -10,3 +10,9 @@ twitter_fetch:
   class: CronTask
   args: "twitter_fetch"
   description: Fetches Updates from twitter
+github_fetch:
+  cron: "*/5 * * * *"
+  queue: cron
+  class: CronTask
+  args: "github_fetch"
+  description: Fetches Updates from github

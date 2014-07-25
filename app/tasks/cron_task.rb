@@ -30,8 +30,14 @@ class CronTask
     Rake::Task["fetch:pocket"].invoke
   end
 
-  def some_other_task
-    # logic here
+  def github_fetch
+    puts "fetch:github starting"
+    Rake::Task["fetch:github"].invoke
+  end
+
+  def twitter_fetch
+    puts "fetch:twitter starting"
+    Rake::Task["fetch:twitter"].invoke
   end
 
 end

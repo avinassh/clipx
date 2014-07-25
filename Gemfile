@@ -35,6 +35,7 @@ gem 'getpocket'
 gem 'evernote_oauth'
 gem 'readability_parser'
 gem 'twitter'
+gem 'octokit'
 
 # Resque related
 gem "resque"  # Background Jobs

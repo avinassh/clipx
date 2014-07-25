@@ -9,10 +9,18 @@ namespace :fetch do
       Resque.enqueue FetchPocketJob, account.id
     end
   end
+
   desc "Fetch updates from pocket for all connected twitter accounts"
   task :twitter do
     TwitterAccount.find_each do |account|
       Resque.enqueue FetchTwitterJob, account.id
+    end
+  end
+
+  desc "Fetch updates from github for all connected github accounts"
+  task :github do
+    GithubAccount.find_each do |account|
+      Resque.enqueue FetchGithubJob, account.id
     end
   end
 end
