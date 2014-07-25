@@ -15,7 +15,7 @@
 
   - @articles.each do |article|
     %tr
-      %td= link_to article.title, article.url
+      %td= link_to article.title_or_heading, article.url
       %td= article.tags
       %td= article.provider
       %td= article.status
