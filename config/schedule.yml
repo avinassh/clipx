@@ -4,3 +4,9 @@ pocket_fetch:
   class: CronTask
   args: "pocket_fetch"
   description: Fetches Updates from pocket
+twitter_fetch:
+  cron: "*/5 * * * *"
+  queue: cron
+  class: CronTask
+  args: "twitter_fetch"
+  description: Fetches Updates from twitter

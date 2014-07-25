@@ -30,9 +30,10 @@ gem 'omniauth-evernote'
 gem 'omniauth-twitter'
 
 # API connections
-gem 'getpocket' # Talk to the pocket API
-gem 'evernote_oauth' # Talk to the evernote API
-gem 'readability_parser' # Talk to Readability Parser API
+gem 'getpocket'
+gem 'evernote_oauth'
+gem 'readability_parser'
+gem 'twitter'
 
 # Resque related
 gem "resque"  # Background Jobs
