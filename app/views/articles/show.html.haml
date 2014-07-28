@@ -26,4 +26,4 @@
   = link_to @article.title_or_heading, @article.url
 
 
-!= @article.content
+!= sanitize(@article.content)
