@@ -8,3 +8,13 @@ input[type="submit"] {
   vertical-align: middle;
   white-space: nowrap;
 }
+
+button.no-bg {
+  @extend button;
+  background: none;
+  color: $grey-4;
+
+  &:hover {
+    color: $hover-button-color-no-bg;
+  }
+}

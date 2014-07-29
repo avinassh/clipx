@@ -1,15 +1,20 @@
-%flash-alert {
+.flash {
+  text-align: center;
+  margin-top: -5px;
+}
+
+.flash-alert {
   @include flash($alert-color);
 }
 
-%flash-error {
+.flash-error {
   @include flash($error-color);
 }
 
-%flash-notice {
+.flash-notice {
   @include flash($notice-color);
 }
 
-%flash-success {
+.flash-success {
   @include flash($success-color);
 }

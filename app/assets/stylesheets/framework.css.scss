@@ -2,9 +2,9 @@
  * This file imports the css frameworks, global settings like colors etc.
  */
 
+@import "globals/colors";
 @import "bourbon";
 @import "base/base";
 @import "neat";
-@import "globals/colors";
 
 @import "components/navigation"
