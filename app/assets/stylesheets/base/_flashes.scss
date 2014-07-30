@@ -11,6 +11,10 @@
   @include flash($error-color);
 }
 
+.flash-danger {
+  @include flash($error-color);
+}
+
 .flash-notice {
   @include flash($notice-color);
 }
