@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_one :github_account, :dependent => :destroy
   has_one :evernote_account, :dependent => :destroy
   has_one :twitter_account, :dependent => :destroy
+  has_one :google_account, :dependent => :destroy
   has_many :articles, :dependent => :destroy
 
   def add_account(provider, omniauth)
