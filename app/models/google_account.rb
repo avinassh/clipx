@@ -15,14 +15,14 @@ class GoogleAccount < PublisherAccount
     account.email = omniauth.info.email
 
     # Return the account itself
-    account.spreadsheet_url = account.fetch_spreadsheet
+    account.spreadsheet_id = account.fetch_spreadsheet
     account
   end
 
   # Create or find a spreadsheet with the given title
   # Returns spreadsheet URL
   def fetch_spreadsheet(title)
-    spreadsheet = GoogleUtil.new self
-    spreadsheet.spreadsheet_feed_url
+    spreadsheet = GoogleUtil.new(self).create_spreadsheet
+    spreadsheet['id']
   end
 end

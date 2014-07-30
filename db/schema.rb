@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140727151105) do
+ActiveRecord::Schema.define(version: 20140730163147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,9 +59,9 @@ ActiveRecord::Schema.define(version: 20140727151105) do
     t.string  "email"
     t.string  "refresh_token"
     t.string  "token"
-    t.integer "last_published",              default: 1406603568
+    t.integer "last_published",             default: 1406603568
     t.integer "token_expiry"
-    t.string  "spreadsheet_url", limit: 500
+    t.string  "spreadsheet_id", limit: 500
     t.integer "user_id"
   end
 

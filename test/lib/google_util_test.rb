@@ -24,7 +24,6 @@ class GoogleUtilTest < ActiveSupport::TestCase
     doc = client.create_spreadsheet 'ClipX Test', 'Sample ClipX spreadsheet'
     assert_not_nil doc
     # Delete the stray empty spreadsheet as well
-    puts "Deleting #{doc['id']} and doc[:id]"
     client.delete_spreadsheet(doc['id'])
   end
 
