@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718174834) do
+ActiveRecord::Schema.define(version: 20140725132859) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +47,17 @@ ActiveRecord::Schema.define(version: 20140718174834) do
   add_index "evernote_accounts", ["user_id"], name: "index_evernote_accounts_on_user_id", using: :btree
   add_index "evernote_accounts", ["username"], name: "index_evernote_accounts_on_username", unique: true, using: :btree
 
+  create_table "github_accounts", force: true do |t|
+    t.integer "uid"
+    t.string  "username"
+    t.string  "token"
+    t.integer "last_fetched"
+    t.integer "user_id"
+  end
+
+  add_index "github_accounts", ["uid"], name: "index_github_accounts_on_uid", unique: true, using: :btree
+  add_index "github_accounts", ["user_id"], name: "index_github_accounts_on_user_id", using: :btree
+
   create_table "pocket_accounts", force: true do |t|
     t.string  "token"
     t.integer "last_fetched"
@@ -53,6 +67,19 @@ ActiveRecord::Schema.define(version: 20140718174834) do
 
   add_index "pocket_accounts", ["user_id"], name: "index_pocket_accounts_on_user_id", using: :btree
   add_index "pocket_accounts", ["username"], name: "index_pocket_accounts_on_username", unique: true, using: :btree
+
+  create_table "twitter_accounts", force: true do |t|
+    t.integer "uid"
+    t.string  "username"
+    t.string  "token"
+    t.string  "secret"
+    t.string  "last_fetched_id"
+    t.integer "last_fetched"
+    t.integer "user_id"
+  end
+
+  add_index "twitter_accounts", ["uid"], name: "index_twitter_accounts_on_uid", unique: true, using: :btree
+  add_index "twitter_accounts", ["user_id"], name: "index_twitter_accounts_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

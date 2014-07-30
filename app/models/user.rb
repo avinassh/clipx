@@ -3,9 +3,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:pocket, :evernote]
+         :omniauthable, :omniauth_providers => [:pocket, :evernote, :twitter, :github]
   has_one :pocket_account, :dependent => :destroy
+  has_one :github_account, :dependent => :destroy
   has_one :evernote_account, :dependent => :destroy
+  has_one :twitter_account, :dependent => :destroy
   has_many :articles, :dependent => :destroy
 
   def add_account(provider, omniauth)
@@ -31,7 +33,7 @@ class User < ActiveRecord::Base
 
   # Returns all integrated accounts available to the user
   # type - Class to filter this account list against
-  #        You may so far pass only PublisherAccount to this option 
+  #        You may so far pass only PublisherAccount to this option
   def accounts(type=AbstractAccount)
     # See http://stackoverflow.com/questions/3371518/in-ruby-is-there-an-array-method-that-combines-select-and-map/17703276#17703276
     # for why reduce was used here

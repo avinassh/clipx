@@ -13,7 +13,7 @@ class ActiveSupport::TestCase
 
   def omniauth
     evernote = evernote_accounts(:default)
-    
+
     DeepStruct.new({
       pocket: {
         credentials: {
@@ -34,6 +34,25 @@ class ActiveSupport::TestCase
               "edam_noteStoreUrl" => evernote.notestore_url
             }
           }
+        }
+      },
+      twitter: {
+        uid: "21758503",
+        info: {
+          nickname: "sm"
+        },
+        credentials: {
+          token: "21758502-YRnKh42Jim9XQVhIfphhKkA6lH84COdn0dmwAGFmK",
+          secret: "uMsCvtKb0HNf9tYkOS0rRC6UhTLj8mBW5sn7aX9Ah5IsY"
+        }
+      },
+      github: {
+        uid: 584254,
+        info: {
+          nickname: "sm",
+        },
+        credentials: {
+          token: "0bf3c601fcd938f6f168e961affda4b9b953c322"
         }
       }
     })

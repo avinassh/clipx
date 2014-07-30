@@ -18,6 +18,7 @@ gem "default_value_for", "~> 3.0.0" # Specify default values for AR in migration
 gem "bourbon"
 gem "neat"
 
+gem 'sanitize' # HTML sanitization before displaying article content
 # New relic to monitor app performance
 # Used in all environments except test
 gem 'newrelic_rpm'
@@ -28,13 +29,17 @@ gem 'loofah' # HTML sanitization & enml conversions
 gem 'libxml-ruby' # XML validation using DTD
 
 # Omniauth strategeies
-gem 'omniauth-pocket' # Connect a pocket account
-gem 'omniauth-evernote' # Connect a evernote account
+gem 'omniauth-pocket'
+gem 'omniauth-evernote'
+gem 'omniauth-twitter'
+gem 'omniauth-github'
 
 # API connections
-gem 'getpocket' # Talk to the pocket API
-gem 'evernote_oauth' # Talk to the evernote API
-gem 'readability_parser' # Talk to Readability Parser API
+gem 'getpocket'
+gem 'evernote_oauth'
+gem 'readability_parser'
+gem 'twitter'
+gem 'octokit'
 
 # Resque related
 gem "resque"  # Background Jobs

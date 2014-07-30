@@ -5,12 +5,12 @@ class EvernotePublisher < PublisherService
       # tags might be nil, if not split by comma
       tags = article.tags ? article.tags.split(',') : Array.new
       title = article.title_or_heading
-      evernote_client.create_note title, article.content, evernote_account.notebook_guid, tags, article.url, article.provider
+      evernote_client.create_note title, article.content, account.notebook_guid, tags, article.url, article.provider
     rescue Evernote::EDAM::Error::EDAMNotFoundException => e
       # The notebook might have been deleted, so re-recreate it
       notebook = evernote_client.find_or_create_notebook 'ClipX'
       # Update the guid in our table
-      evernote_account.update_attribute 'notebook_guid', notebook.guid
+      account.update_attribute 'notebook_guid', notebook.guid
       # retry publishing
       article.publish
     end

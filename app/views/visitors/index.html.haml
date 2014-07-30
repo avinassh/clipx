@@ -2,7 +2,7 @@
   ClipX
 - if current_user
   %div
-    Pocket Integration : 
+    Pocket Integration :
     - if current_user.pocket_account
       %span
         = current_user.pocket_account.username
@@ -12,6 +12,20 @@
         = link_to "(Re-integrate)", user_omniauth_authorize_path(:pocket)
     - else
       = link_to "Integrate with pocket", user_omniauth_authorize_path(:pocket)
+  %div
+    Twitter Integration :
+    - if current_user.twitter_account
+      %span
+        = current_user.twitter_account.username
+        Last fetched
+        - if current_user.twitter_account.last_fetched.nil?
+          Never
+        - else
+          = time_ago_in_words Time.at(current_user.twitter_account.last_fetched).to_datetime
+        ago
+        = link_to "(Re-integrate)", user_omniauth_authorize_path(:twitter)
+    - else
+      = link_to "Integrate with twitter", user_omniauth_authorize_path(:twitter)
   %div
     Evernote Integration :
     - if current_user.evernote_account
@@ -23,5 +37,19 @@
         = link_to "(Re-integrate)", user_omniauth_authorize_path(:evernote)
     - else
       = link_to "Integrate with evernote", user_omniauth_authorize_path(:evernote)
+  %div
+    Github Integration :
+    - if current_user.github_account
+      %span
+        = current_user.github_account.username
+        Last fetched
+        - if current_user.github_account.last_fetched.nil?
+          Never
+        - else
+          = time_ago_in_words Time.at(current_user.github_account.last_fetched).to_datetime
+        ago
+        = link_to "(Re-integrate)", user_omniauth_authorize_path(:github)
+    - else
+      = link_to "Integrate with GitHub", user_omniauth_authorize_path(:github)
 - else
-  You are not logged in 
+  You are not logged in
