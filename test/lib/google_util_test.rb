@@ -27,4 +27,18 @@ class GoogleUtilTest < ActiveSupport::TestCase
     client.delete_spreadsheet(doc['id'])
   end
 
+  test 'should find or create spreadsheet' do
+    client = GoogleUtil.new @second
+    title = (0...8).map { (65 + rand(26)).chr }.join
+    # This should be creating
+    doc = client.find_or_create_spreadsheet title
+    assert_equal doc['title'], title
+
+    # Now we should be finding it
+    doc = client.find_or_create_spreadsheet title
+    assert_equal doc['title'], title
+
+    # And now we delete it
+    client.delete_spreadsheet doc['id']
+  end
 end

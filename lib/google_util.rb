@@ -56,13 +56,17 @@ class GoogleUtil
   def delete_spreadsheet(id)
     @simple_client.files_delete(id)
   end
-  # Finds or creates a new spreadsheet
+
+  # Finds or creates a new spreadsheet using given title
+  # title - title of the spreadsheet to search by and create
+  # description - description used if creating a spreadsheet
   # Returns spreadsheet instance
-  def find_or_create_spreadsheet(title)
-    spreadsheet = @session.spreadsheet_by_title(title)
-    return spreadsheet if spreadsheet
-    self.create_spreadsheet(title)
+  def find_or_create_spreadsheet(title, description = '')
+    list = @simple_client.files_list({:q => "title = '#{title}'"})
+    return list['items'][0] if list['items'].length > 0
+    self.create_spreadsheet(title, description)
   end
+
   private :setup_session, :update_token
   attr_reader :gdrive, :simple_client
 end

@@ -15,14 +15,14 @@ class GoogleAccount < PublisherAccount
     account.email = omniauth.info.email
 
     # Return the account itself
-    account.spreadsheet_id = account.fetch_spreadsheet
+    account.spreadsheet_id = account.fetch_spreadsheet("ClipX Bookmarks", "All your bookmarks synced from ClipX")
     account
   end
 
   # Create or find a spreadsheet with the given title
   # Returns spreadsheet URL
-  def fetch_spreadsheet(title)
-    spreadsheet = GoogleUtil.new(self).create_spreadsheet
+  def fetch_spreadsheet(title, description)
+    spreadsheet = GoogleUtil.new(self).find_or_create_spreadsheet(title, description)
     spreadsheet['id']
   end
 end
