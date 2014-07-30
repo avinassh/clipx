@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:pocket, :evernote, :twitter, :github]
+         :omniauthable, :omniauth_providers => [:pocket, :evernote, :twitter, :github, :google]
   has_one :pocket_account, :dependent => :destroy
   has_one :github_account, :dependent => :destroy
   has_one :evernote_account, :dependent => :destroy
