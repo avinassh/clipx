@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:captn3m0/simple_google_drive.git
+  revision: 0defbba2db05dcb13b840c0b67b3732e48e5812a
+  branch: patch-1
+  specs:
+    simple_google_drive (0.5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -73,6 +80,10 @@ GEM
     ffi (1.2.1)
     getpocket (0.0.4)
       httparty
+    google_drive (0.3.10)
+      nokogiri (>= 1.4.4, != 1.5.2, != 1.5.1)
+      oauth (>= 0.3.6)
+      oauth2 (>= 0.5.0)
     haml (4.1.0.beta.1)
       tilt
     haml-rails (0.5.3)
@@ -145,6 +156,9 @@ GEM
       omniauth-oauth (~> 1.0)
     omniauth-github (1.1.2)
       omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.1)
+    omniauth-google-oauth2 (0.2.5)
+      omniauth (> 1.0)
       omniauth-oauth2 (~> 1.1)
     omniauth-oauth (1.0.1)
       oauth
@@ -311,6 +325,7 @@ DEPENDENCIES
   devise
   evernote_oauth
   getpocket
+  google_drive
   haml-rails
   high_voltage
   html2haml
@@ -323,6 +338,7 @@ DEPENDENCIES
   octokit
   omniauth-evernote
   omniauth-github
+  omniauth-google-oauth2
   omniauth-pocket
   omniauth-twitter
   pg
@@ -336,6 +352,7 @@ DEPENDENCIES
   resque-web
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  simple_google_drive!
   simplecov
   spring
   tidy_ffi
