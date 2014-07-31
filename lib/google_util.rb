@@ -53,6 +53,8 @@ class GoogleUtil
     @simple_client.files_insert(body)
   end
 
+  # Deletes a spreadsheet with the given id
+  # id - id of the spreadsheet to delete
   def delete_spreadsheet(id)
     @simple_client.files_delete(id)
   end
@@ -67,6 +69,29 @@ class GoogleUtil
     self.create_spreadsheet(title, description)
   end
 
+  # Writes a row to the spreadsheet with the given title
+  # Uses find_or_create_spreadsheet to get the spreadsheet
+  # Uses first worksheet
+  # spreadsheet_id - title of the spreadsheet to find and use
+  # row - an array of values to put in the first available row
+  def add_row(spreadsheet_id, row)
+    spreadsheet = @gdrive.spreadsheet_by_key(spreadsheet_id)
+    worksheet = spreadsheet.worksheets[0]
+    last_row = worksheet.num_rows()
+    worksheet.update_cells(last_row+1,0,[row])
+    worksheet.save
+  end
+
+  # Adds given 2d table to the spreadsheet's first worksheet
+  # spreadsheet_id - id of the spreadsheet
+  # table - 2d array of content to insert in table
+  #         first row is assumed to be the header, but is treated normally
+  def add_table(table)
+    spreadsheet = @gdrive.spreadsheet_by_key(@account.spreadsheet_id)
+    worksheet = spreadsheet.worksheets[0]
+    worksheet.update_cells(1,1, table)
+    worksheet.save
+  end
   private :setup_session, :update_token
   attr_reader :gdrive, :simple_client
 end
