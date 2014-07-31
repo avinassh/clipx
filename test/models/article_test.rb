@@ -12,4 +12,13 @@ class ArticleTest < ActiveSupport::TestCase
     @article.heading = "  "
     assert_equal "Empty Title", @article.title_or_heading
   end
+
+  test 'title or heading with nils' do
+    @article.title= nil
+    @article.heading = nil
+    assert_equal "Empty Title", @article.title_or_heading
+
+    @article.heading = "Heading"
+    assert_equal "Heading", @article.title_or_heading
+  end
 end
