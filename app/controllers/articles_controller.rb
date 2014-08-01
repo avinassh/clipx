@@ -5,7 +5,11 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.where(user_id: current_user.id)
+    if params[:q].present?
+      @articles = Article.search(params[:q], user_id: current_user.id)
+    else
+      @articles = Article.where(user_id: current_user.id)
+    end
   end
 
   # GET /articles/1
