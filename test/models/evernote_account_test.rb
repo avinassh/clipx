@@ -1,5 +1,6 @@
 require 'test_helper'
 require 'mocha'
+require 'ostruct'
 class EvernoteAccountTest < ActiveSupport::TestCase
   def setup
     @account = evernote_accounts(:default)
@@ -8,7 +9,7 @@ class EvernoteAccountTest < ActiveSupport::TestCase
   test 'should create a new account' do
     assert_difference('EvernoteAccount.count') do
       # Stub the notebook creation, so we don't hit the API
-      EvernoteAccount.any_instance.stubs(:fetch_notebook).returns(@account.notebook_guid)
+      EvernoteUtil.any_instance.stubs(:find_or_create_notebook).returns(OpenStruct.new(:guid=>@account.notebook_guid))
       # create the account
       account = EvernoteAccount.create_from_omniauth self.omniauth.evernote
       # We do this so that the user_id field validates
