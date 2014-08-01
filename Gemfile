@@ -47,9 +47,8 @@ gem "resque"  # Background Jobs
 gem "resque-scheduler"  # Schedule background jobs
 gem 'resque-web', require: 'resque_web' # Web UI for our resque jobs
 
-# Elastic search gems for searching and indexing
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
+# Search related
+gem 'searchkick'
 
 group :development do
   gem 'better_errors'

@@ -71,11 +71,6 @@ GEM
       elasticsearch-transport (= 1.0.4)
     elasticsearch-api (1.0.4)
       multi_json
-    elasticsearch-model (0.1.4)
-      activesupport (> 3)
-      elasticsearch (> 0.4)
-      hashie
-    elasticsearch-rails (0.1.4)
     elasticsearch-transport (1.0.4)
       faraday
       multi_json
@@ -269,6 +264,10 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    searchkick (0.8.0)
+      activemodel
+      elasticsearch (>= 1)
+      hashie
     sexp_processor (4.4.3)
     simple_oauth (0.2.0)
     simplecov (0.8.2)
@@ -342,8 +341,6 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   default_value_for (~> 3.0.0)
   devise
-  elasticsearch-model
-  elasticsearch-rails
   evernote_oauth
   foreman
   getpocket
@@ -374,6 +371,7 @@ DEPENDENCIES
   sanitize
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  searchkick
   simplecov
   spring
   tidy_ffi
