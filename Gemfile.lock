@@ -1,10 +1,3 @@
-GIT
-  remote: git@github.com:captn3m0/simple_google_drive.git
-  revision: 0defbba2db05dcb13b840c0b67b3732e48e5812a
-  branch: patch-1
-  specs:
-    simple_google_drive (0.5.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -252,6 +245,7 @@ GEM
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
     sexp_processor (4.4.3)
+    simple_google_drive (0.5.1)
     simple_oauth (0.2.0)
     simplecov (0.8.2)
       docile (~> 1.1.0)
@@ -352,7 +346,7 @@ DEPENDENCIES
   resque-web
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
-  simple_google_drive!
+  simple_google_drive
   simplecov
   spring
   tidy_ffi

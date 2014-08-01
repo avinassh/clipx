@@ -39,7 +39,7 @@ gem 'twitter'
 gem 'octokit'
 # We are using our fork
 # TODO: Shift to upstream when PR is merged
-gem 'simple_google_drive', :git => 'git@github.com:captn3m0/simple_google_drive.git', :branch => 'patch-1' # Used for creating a spreadsheet
+gem 'simple_google_drive' # Used for creating a spreadsheet
 gem 'google_drive' # For writing to a spreadsheet
 
 # Resque related
