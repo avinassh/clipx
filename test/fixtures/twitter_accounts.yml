@@ -3,4 +3,4 @@ default:
   username: captn3m0
   token: 21758502-YRnKh42Jim9XQVhIfphhKkA6lH84COdn0dmwAGFmK
   secret: uMsCvtKb0HNf9tYkOS0rRC6UhTLj8mBW5sn7aX9Ah5IsY
-  user_id: 1
+  user: default

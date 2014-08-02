@@ -2,15 +2,15 @@ default:
   token: ya29.UQBoQPABwQjv-RwAAACvgw9NNIOijJ_ug1A3J8JyCmJKI209rEeoMJMJeUtVRQ
   refresh_token: 1/e4KjLfXNx2_dlgcYkt2Ajd03cjJYRd6UBVzCP3DsvJo
   token_expiry: <%= 1.hours.from_now.to_i %>
-  user_id: 1
   email: capt.n3m0@gmail.com
   spreadsheet_id: 1pFDdAW6DBGuVr7G0f_akMBYkfXa4AyqQFJCNUJ1-5C0
+  user: default
 second:
   token: Invalid Token
   refresh_token: 1/e4KjLfXNx2_dlgcYkt2Ajd03cjJYRd6UBVzCP3DsvJo
   # This is a deliberately expired token
   # to see if token refresh works
   token_expiry: <%= 1.hours.ago.to_i %>
-  user_id: 2
+  user: non_admin
   email: sm@gmail.com
   spreadsheet_id: 1pFDdAW6DBGuVr7G0f_akMBYkfXa4AyqQFJCNUJ1-5C0
