@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140725132859) do
+ActiveRecord::Schema.define(version: 20140730163147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,16 @@ ActiveRecord::Schema.define(version: 20140725132859) do
 
   add_index "github_accounts", ["uid"], name: "index_github_accounts_on_uid", unique: true, using: :btree
   add_index "github_accounts", ["user_id"], name: "index_github_accounts_on_user_id", using: :btree
+
+  create_table "google_accounts", force: true do |t|
+    t.string  "email"
+    t.string  "refresh_token"
+    t.string  "token"
+    t.integer "last_published",             default: 1406603568
+    t.integer "token_expiry"
+    t.string  "spreadsheet_id", limit: 500
+    t.integer "user_id"
+  end
 
   create_table "pocket_accounts", force: true do |t|
     t.string  "token"

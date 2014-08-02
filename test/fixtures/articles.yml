@@ -6,7 +6,7 @@ one:
   image: Blank
   tags: "hello, world"
   provider: test
-  user_id: 1
+  user: default
   status: fetched
   content: |
     <div><article class="markdown-body entry-content">
@@ -27,7 +27,7 @@ one:
     <li>Real-time control loops, as in Robotics,</li>
     <li>Numerical and scientific computation pipelines,</li>
     <li>Anything that filters information from some input sources, in real-time, and sends a transformed form to output devices!</li>
-    </ul><p>An early &#x201C;proposal&#x201D; for the design of Escher, 
+    </ul><p>An early &#x201C;proposal&#x201D; for the design of Escher,
     <a href="http://www.maymounkov.org/memex/abstract">Escher: A black-and-white language for data and process representation</a>,
     might be an informative (but not necessary) read for the theoretically inclined.</p>
     <h2>
@@ -36,17 +36,17 @@ one:
     Escher program, there is no input and output: There are only emergences and disappearances of events.</p>
     <p>Escher presents the world in a model called <a href="http://arxiv.org/pdf/math/9705225.pdf">Choiceless Computation</a>,
     introduced by the legendary Mathematicians
-    <a href="http://www.math.lsa.umich.edu/%7Eablass/">Andreas Blass</a>, 
-    <a href="http://research.microsoft.com/en-us/um/people/gurevich/">Yuri Gurevich</a> and 
+    <a href="http://www.math.lsa.umich.edu/%7Eablass/">Andreas Blass</a>,
+    <a href="http://research.microsoft.com/en-us/um/people/gurevich/">Yuri Gurevich</a> and
     <a href="http://shelah.logic.at/">Sharon Shelah</a>, and introduced to me by the dare-to-be-great, soon-to-be-legendary,
     although-already-should-be <a href="http://research.nii.ac.jp/%7Erossman/">Benjamin Rossman</a>.</p>
     <p>Understanding the difference between Turing Machines and Choiceless Computation,
-    while not entirely necessary, sheds much light on the profound difference between 
-    Escher and other languages. The relevant publications are quoted in the 
+    while not entirely necessary, sheds much light on the profound difference between
+    Escher and other languages. The relevant publications are quoted in the
     <a href="https://github.com/gocircuit/escher#bibliography">bibliography</a> at the end.</p>
     <h3>
     <a name="user-content-choiceless-programming-by-example" class="anchor" href="https://github.com/gocircuit/escher#choiceless-programming-by-example"></a>Choiceless programming by example</h3>
-    <p>The following puzzle demonstrates choiceless programming via a simple relatable high-school 
+    <p>The following puzzle demonstrates choiceless programming via a simple relatable high-school
     Math puzzle:</p>
     <blockquote>
     <p>Four beer caps are placed on the corners of a square table with arbitrary
@@ -79,7 +79,7 @@ one:
     <p>The illustration below shows a reflex, named <code>AND</code>, which has three valves,
     named <code>X</code>, <code>Y</code> and <code>XandY</code>, respectively.</p>
     <p><a href="https://github.com/gocircuit/escher/raw/master/misc/img/design.png" target="_blank"><img src="https://github.com/gocircuit/escher/raw/master/misc/img/design.png" alt="An Escher reflex"></a></p>
-    <p>A reflex can be implemented in another technology (currently only the 
+    <p>A reflex can be implemented in another technology (currently only the
     <a href="http://golang.org">Go Programming Language</a> is supported
     as an external technology) or it can be composed of pre-existing reflexes.
     The former is called a <em>gate</em>, while the latter is called a <em>circuit</em>.</p>
@@ -91,7 +91,7 @@ one:
     reflexes that broker values. But from the user's POV, gates can have &#x201C;side-effects&#x201D;
     in the &#x201C;outside world&#x201D; and, vice-versa, the outside world can prompt reflexive
     action, such as sending out a message over a valve asynchronously.</p>
-    <p>To implement your own gates, take example from the <a href="https://github.com/gocircuit/escher/blob/master/faculty/basic/reason.go">implementation of the 
+    <p>To implement your own gates, take example from the <a href="https://github.com/gocircuit/escher/blob/master/faculty/basic/reason.go">implementation of the
     &#x201C;reasoning&#x201D; gate</a> (discussed later).</p>
     <h2>
     <a name="user-content-circuits" class="anchor" href="https://github.com/gocircuit/escher#circuits"></a>Circuits</h2>
@@ -115,7 +115,7 @@ one:
     That directory is represented as the root in the faculty namespace inside the Escher programming environment.</p>
     <p>Escher compiles all files ending in <code>.escher</code> and attaches the resulting circuit designs
     to the namespaces corresponding to their directory parents.</p>
-    <p>To materialize (i.e. run) an Escher program, use the mandatory <code>-src</code> flag to specify the path to the local 
+    <p>To materialize (i.e. run) an Escher program, use the mandatory <code>-src</code> flag to specify the path to the local
     source directory.</p>
     <pre><code>escher -src tutorial/helloworld
     </code></pre>
@@ -185,7 +185,7 @@ one:
     </blockquote>
     <h2>
     <a name="user-content-duality-gates" class="anchor" href="https://github.com/gocircuit/escher#duality-gates"></a>Duality gates</h2>
-    <p>Duality gates are the boundary between Escher semantics and the outside world. 
+    <p>Duality gates are the boundary between Escher semantics and the outside world.
     They are the I/O with the outside. Such gates affect some external technology
     when prompted through Escher in a certain way. Alternatively, such gates might
     fire an Escher message on one of its valves, in response to an asynchronous
@@ -230,7 +230,7 @@ one:
     that <code>@escherio</code> wants a <code>#ColbertBump</code>. The <code>#ColbertFaculty</code> is coming soon.</p>
     <p>&#x2026;if you want to inquire about the science behind <a href="https://twitter.com/escherio">@escherio</a>, tweet to me,
     Petar <a href="https://twitter.com/maymounkov">@maymounkov</a>.</p>
-    <p>Or, simply lose yourself in the 
+    <p>Or, simply lose yourself in the
     <a href="http://www.maymounkov.org/chomsky-valiant-algorithmic-mirror">initial</a>
     <a href="http://www.maymounkov.org/puzzle-test-turing-test">thoughts</a> that
     led to the invention of Escher.</p>
@@ -240,9 +240,9 @@ one:
     <h2>
     <a name="user-content-bibliography" class="anchor" href="https://github.com/gocircuit/escher#bibliography"></a>Bibliography</h2>
     <ul class="task-list">
-    <li><p><a href="http://arxiv.org/pdf/math/9705225.pdf">Choiceless Polynomial Time</a>, 
-    <a href="http://www.math.lsa.umich.edu/%7Eablass/">Andreas Blass</a>, 
-    <a href="http://research.microsoft.com/en-us/um/people/gurevich/">Yuri Gurevich</a> and 
+    <li><p><a href="http://arxiv.org/pdf/math/9705225.pdf">Choiceless Polynomial Time</a>,
+    <a href="http://www.math.lsa.umich.edu/%7Eablass/">Andreas Blass</a>,
+    <a href="http://research.microsoft.com/en-us/um/people/gurevich/">Yuri Gurevich</a> and
     <a href="http://shelah.logic.at/">Saharon Shelah</a>, published by Shelah Office
     on <a href="http://arxiv.org/abs/math/9705225">arXiv</a>, 1997</p></li>
     <li><p><a href="http://link.springer.com/chapter/10.1007%2F3-540-44622-2_6">Choiceless Polynomial Time Logic: Inability to Express</a>,
@@ -254,3 +254,13 @@ one:
     <p>People working in this or unsuspectingly related areas:</p>
     </article>
     </div>
+two:
+  url: http://www.googlex.com/
+  title: Sample Title 2
+  heading: Sample Heading 2
+  image: Blank
+  tags: "hello, world"
+  provider: test
+  user: non_admin
+  status: fetched
+  content: Hello <b>World</b>

@@ -38,6 +38,17 @@
     - else
       = link_to "Integrate with evernote", user_omniauth_authorize_path(:evernote)
   %div
+    Google Drive Integration :
+    - if current_user.google_account
+      %span
+        = current_user.google_account.email
+        Last published
+        = time_ago_in_words Time.at(current_user.google_account.last_published).to_datetime
+        ago
+        = link_to "(Re-integrate)", user_omniauth_authorize_path(:google)
+    - else
+      = link_to "Integrate with google", user_omniauth_authorize_path(:google)
+  %div
     Github Integration :
     - if current_user.github_account
       %span
