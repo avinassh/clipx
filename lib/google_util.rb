@@ -78,7 +78,7 @@ class GoogleUtil
     spreadsheet = @gdrive.spreadsheet_by_key(spreadsheet_id)
     worksheet = spreadsheet.worksheets[0]
     last_row = worksheet.num_rows()
-    worksheet.update_cells(last_row+1,0,[row])
+    worksheet.update_cells(last_row+1,1,[row])
     worksheet.save
   end
 
