@@ -46,7 +46,7 @@
       - if user_signed_in?
         .search-bar
           %form.search-and-submit{:action=>"/articles"}
-            %input{:placeholder => "Enter Search", :type => "search", :name=>"q"}
+            %input{:placeholder => "Enter Search", :type => "search", :name=>"q", :id=>"query"}
             %button{:type => "submit"}
               %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png"}
       - else

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root to: 'visitors#index'
 
   # Article-related
+  get 'articles/autocomplete', :to => 'articles#autocomplete'
   resources :articles
 
   # Devise auto-generates routes for various authentication-related methods

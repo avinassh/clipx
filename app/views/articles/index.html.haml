@@ -1,3 +1,5 @@
+= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"
+
 %h1 Listing articles
 
 = link_to 'New Article', new_article_path
@@ -23,3 +25,9 @@
       %td= link_to 'Show', article
       %td= link_to 'Edit', edit_article_path(article)
       %td= link_to 'Delete', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%script
+  $("#query").typeahead({
+  name: "q",
+  remote: "/articles/autocomplete?q=%QUERY"
+  });

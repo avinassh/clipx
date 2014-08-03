@@ -89,4 +89,13 @@ class ArticlesControllerTest < ActionController::TestCase
     articles = JSON.parse(@response.body)
     assert_equal 0, articles.length
   end
+
+  test 'should autocomplete articles' do
+    Article.all.reindex
+    get :autocomplete, { :q => "Sample"}
+    assert_response :success
+    articles = JSON.parse(@response.body)
+    assert_equal ["Sample Title"], articles
+    assert_equal 1, articles.count
+  end
 end

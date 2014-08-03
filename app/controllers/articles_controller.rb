@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_article, only: [:show, :edit, :update, :destroy, :view]
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
   # GET /articles.json
@@ -10,6 +10,10 @@ class ArticlesController < ApplicationController
     else
       @articles = Article.where(user_id: current_user.id)
     end
+  end
+
+  def autocomplete
+    render json: Article.autocomplete(params[:q], current_user.id)
   end
 
   # GET /articles/1
