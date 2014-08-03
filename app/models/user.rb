@@ -3,12 +3,13 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:pocket, :evernote, :twitter, :github, :google]
+         :omniauthable, :omniauth_providers => [:pocket, :evernote, :twitter, :github, :google, :dropbox]
   has_one :pocket_account, :dependent => :destroy
   has_one :github_account, :dependent => :destroy
   has_one :evernote_account, :dependent => :destroy
   has_one :twitter_account, :dependent => :destroy
   has_one :google_account, :dependent => :destroy
+  has_one :dropbox_account, :dependent => :destroy
   has_many :articles, :dependent => :destroy
 
   def add_account(provider, omniauth)

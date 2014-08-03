@@ -64,6 +64,15 @@ class ActiveSupport::TestCase
           refresh_token: "1/e4KjLfXNx2_dlgcYkt2Ajd03cjJYRd6UBVzCP3DsvJo",
           expires_at: 1.hours.from_now.to_i
         }
+      },
+      dropbox: {
+        uid: "1766114",
+        info: {
+          email: "sm@gmail.com"
+        },
+        credentials: {
+          token: "dIADRzqNkRIAAAAAAAAIFUrCYPQJS2gd7hJgWG-Jt_66AJd1AmgEAJj4_T5iK1Oj"
+        }
       }
     })
   end

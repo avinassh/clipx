@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730163147) do
+ActiveRecord::Schema.define(version: 20140803143757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 20140730163147) do
   end
 
   add_index "articles", ["url", "user_id"], name: "index_articles_on_url_and_user_id", unique: true, using: :btree
+
+  create_table "dropbox_accounts", force: true do |t|
+    t.string  "email"
+    t.string  "uid"
+    t.string  "token"
+    t.integer "user_id"
+  end
+
+  add_index "dropbox_accounts", ["uid"], name: "index_dropbox_accounts_on_uid", unique: true, using: :btree
+  add_index "dropbox_accounts", ["user_id"], name: "index_dropbox_accounts_on_user_id", using: :btree
 
   create_table "evernote_accounts", force: true do |t|
     t.string  "token"

@@ -242,7 +242,10 @@ Devise.setup do |config|
       :prompt=>'consent',
       :access_type=>'offline'
     }
-
+  config.omniauth :dropbox_oauth2, Rails.application.secrets.dropbox_key, Rails.application.secrets.dropbox_secret,
+    {
+      :name => 'dropbox'
+    }
   OmniAuth.config.on_failure = Proc.new { |env|
     OmniAuth::FailureEndpoint.new(env).redirect_to_failure
   }

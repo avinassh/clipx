@@ -146,6 +146,8 @@ GEM
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
+    omniauth-dropbox-oauth2 (0.2.0)
+      omniauth-oauth2
     omniauth-evernote (1.2.1)
       evernote-thrift
       multi_json (~> 1.0)
@@ -337,6 +339,7 @@ DEPENDENCIES
   mocha
   newrelic_rpm
   octokit
+  omniauth-dropbox-oauth2
   omniauth-evernote
   omniauth-github
   omniauth-google-oauth2

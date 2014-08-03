@@ -30,6 +30,7 @@ gem 'omniauth-evernote'
 gem 'omniauth-twitter'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-dropbox-oauth2'
 
 # API connections
 gem 'getpocket'
