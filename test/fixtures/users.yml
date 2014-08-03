@@ -1,10 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 default:
-  id: 1
   email: user@example.com
   name: Test User
 non_admin:
-  id: 2
   email: nemo@clipx.in
   name: Nemo

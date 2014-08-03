@@ -10,8 +10,8 @@ class Article < ActiveRecord::Base
   scope :extracted, -> { where(status: ['published','held']) }
 
   def title_or_heading
-    return title unless title.squish.empty?
-    return heading unless heading.squish.empty?
+    return title unless !title or title.squish.empty?
+    return heading unless !heading or heading.squish.empty?
     "Empty Title"
   end
 end

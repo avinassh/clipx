@@ -91,6 +91,10 @@ GEM
       thor (~> 0.19.1)
     getpocket (0.0.4)
       httparty
+    google_drive (0.3.10)
+      nokogiri (>= 1.4.4, != 1.5.2, != 1.5.1)
+      oauth (>= 0.3.6)
+      oauth2 (>= 0.5.0)
     haml (4.1.0.beta.1)
       tilt
     haml-rails (0.5.3)
@@ -168,6 +172,9 @@ GEM
       omniauth-oauth (~> 1.0)
     omniauth-github (1.1.2)
       omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.1)
+    omniauth-google-oauth2 (0.2.5)
+      omniauth (> 1.0)
       omniauth-oauth2 (~> 1.1)
     omniauth-oauth (1.0.1)
       oauth
@@ -264,6 +271,7 @@ GEM
       elasticsearch (>= 1)
       hashie
     sexp_processor (4.4.3)
+    simple_google_drive (0.5.1)
     simple_oauth (0.2.0)
     simplecov (0.8.2)
       docile (~> 1.1.0)
@@ -339,6 +347,7 @@ DEPENDENCIES
   evernote_oauth
   foreman
   getpocket
+  google_drive
   haml-rails
   high_voltage
   html2haml
@@ -352,6 +361,7 @@ DEPENDENCIES
   octokit
   omniauth-evernote
   omniauth-github
+  omniauth-google-oauth2
   omniauth-pocket
   omniauth-twitter
   pg
@@ -366,6 +376,7 @@ DEPENDENCIES
   sanitize
   sass-rails (~> 4.0.3)
   searchkick
+  simple_google_drive
   simplecov
   spring
   tidy_ffi

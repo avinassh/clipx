@@ -87,7 +87,7 @@ disallowed_tags:
   - isindex
   - label
   - layer
-  - 
+  -
   - legend
   - link
   - marquee
@@ -117,6 +117,7 @@ disallowed_attributes:
   - tabindex
   - score
   - name
+  - "class:name"
 valid_url_schemes:
   - http
   - https
