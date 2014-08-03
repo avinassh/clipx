@@ -37,8 +37,6 @@ gem 'evernote_oauth'
 gem 'readability_parser'
 gem 'twitter'
 gem 'octokit'
-# We are using our fork
-# TODO: Shift to upstream when PR is merged
 gem 'simple_google_drive' # Used for creating a spreadsheet
 gem 'google_drive' # For writing to a spreadsheet
 
