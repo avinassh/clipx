@@ -1,0 +1,12 @@
+= stylesheet_link_tag 'print'
+!= sanitize(@article.content)
+
+%hr
+
+%b
+  Tags:
+=@article.tags
+
+%b
+  Provider:
+=@article.provider
