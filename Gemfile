@@ -40,6 +40,7 @@ gem 'twitter'
 gem 'octokit'
 gem 'simple_google_drive' # Used for creating a spreadsheet
 gem 'google_drive' # For writing to a spreadsheet
+gem 'dropbox-sdk'
 
 # Resque related
 gem "resque"  # Background Jobs

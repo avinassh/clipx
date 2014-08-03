@@ -60,6 +60,8 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     docile (1.1.5)
+    dropbox-sdk (1.6.4)
+      json
     equalizer (0.0.9)
     erubis (2.7.0)
     evernote-thrift (1.25.1)
@@ -326,6 +328,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   default_value_for (~> 3.0.0)
   devise
+  dropbox-sdk
   evernote_oauth
   getpocket
   google_drive
