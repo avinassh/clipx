@@ -1,4 +1,5 @@
-= stylesheet_link_tag 'print'
+-# This print css tag works for both the browser and file-system in places like dropbox
+%link(href="../../assets/print.css")
 != sanitize(@article.content)
 
 %hr
