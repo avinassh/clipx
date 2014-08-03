@@ -1,9 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # Instead of defining multiple methods for
   # every provider, we just use this
-  def dropbox
-    render json: request.env['omniauth.auth']
-  end
   def action_missing(provider)
     account = current_user.add_account provider, request.env['omniauth.auth']
     if account.is_a? PublisherAccount
