@@ -18,7 +18,7 @@ gem 'sanitize' # HTML sanitization before displaying article content
 # New relic to monitor app performance
 # Used in all environments except test
 gem 'newrelic_rpm'
-
+gem 'render_anywhere' # Render print view in jobs
 # Evernote Util class requires these
 gem 'tidy_ffi' # html to valid xhtml
 gem 'loofah' # HTML sanitization & enml conversions
