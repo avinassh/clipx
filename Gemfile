@@ -8,7 +8,6 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'bootstrap-sass'
 gem 'devise'  # Handles user authentication
 gem 'haml-rails'
@@ -38,6 +37,7 @@ gem 'evernote_oauth'
 gem 'readability_parser'
 gem 'twitter'
 gem 'octokit'
+gem 'github-markup'
 gem 'simple_google_drive' # Used for creating a spreadsheet
 gem 'google_drive' # For writing to a spreadsheet
 gem 'dropbox-sdk'
@@ -46,6 +46,15 @@ gem 'dropbox-sdk'
 gem "resque"  # Background Jobs
 gem "resque-scheduler"  # Schedule background jobs
 gem 'resque-web', require: 'resque_web' # Web UI for our resque jobs
+
+# Used to render github readmes
+gem 'redcarpet'
+gem 'RedCloth'
+gem 'rdoc', '3.6.1'
+gem 'org-ruby'
+gem 'creole'
+gem 'wikicloth'
+gem 'asciidoctor'
 
 group :development do
   gem 'better_errors'

@@ -264,3 +264,13 @@ two:
   user: non_admin
   status: fetched
   content: Hello <b>World</b>
+github:
+  url: https://github.com/github/markup
+  title: GitHub Markup
+  heading: github/markup
+  image:
+  tags: ruby
+  provider: github
+  user: default
+  status: fetched
+  content:
