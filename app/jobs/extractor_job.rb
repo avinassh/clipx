@@ -7,12 +7,11 @@ ReadabilityParser.api_token = Rails.application.secrets.readability_parser_key
 class ExtractorJob
   @queue = :extractor
   def self.perform(article_id)
-    puts "Running extractor job"
     article = Article.find(article_id)
     article.update_attribute 'status', 'held'
 
     if article.provider == 'github'
-      webpage = gfm (article.url)
+      webpage = self.github article
     else
       webpage = ReadabilityParser.parse article
     end
@@ -23,7 +22,7 @@ class ExtractorJob
     Resque.enqueue PublishJob, article_id
   end
 
-  def github(article)
+  def self.github(article)
     client = Octokit::Client.new(:access_token => article.user.github_account.token)
 
     # Convert the url to user+repo
