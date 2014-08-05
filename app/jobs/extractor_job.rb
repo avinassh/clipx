@@ -34,8 +34,12 @@ class ExtractorJob
     readme = client.readme("#{username}/#{reponame}")
     readme_file_name = readme.name
 
-    # Now we render the readme to html
-    html = GitHub::Markup.render(readme_file_name, Base64.decode64(readme.content))
+    # Now we render the readme to html, if we can
+    if GitHub::Markup.can_render?(readme_file_name)
+      html = GitHub::Markup.render(readme_file_name, Base64.decode64(readme.content))
+    else
+      html = Base64.decode64(readme.content)
+    end
 
     OpenStruct.new({
       :content => html,
