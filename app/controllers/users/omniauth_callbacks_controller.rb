@@ -5,6 +5,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     account = current_user.add_account provider, request.env['omniauth.auth']
     if account.is_a? PublisherAccount
       Resque.enqueue ExportJob, current_user.id, account.class.name
+    else
+      Resque.enqueue ImportJob, current_user.id, account.class.name, account.id
     end
     flash[:notice] = "#{provider.titlecase} was successfully integrated."
     current_user
