@@ -66,4 +66,27 @@ class ImportJob
     # Return articles array
     articles
   end
+
+
+  # Fetches all starred repos for a github account
+  # Returns an array of Article hashes
+  def self.github(account)
+    # Setup
+    articles = Array.new
+    github = Octokit::Client.new(:access_token => account.token)
+    Octokit.auto_paginate = true
+
+    # Now we iterate
+    github.starred.reverse.each do |repo|
+      articles.push({
+        :url=>repo.html_url,
+        :title=>repo.full_name,
+        :tags=>repo.language,
+        :content => repo.description
+      })
+    end
+
+    # Return articles array
+    articles
+  end
 end
