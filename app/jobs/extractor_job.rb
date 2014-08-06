@@ -12,7 +12,7 @@ class ExtractorJob
     if article.provider == 'github'
       webpage = self.github article
     else
-      webpage = ReadabilityParser.parse article
+      webpage = ReadabilityParser.parse article.url
     end
 
     article.update_attribute 'heading', webpage.title
