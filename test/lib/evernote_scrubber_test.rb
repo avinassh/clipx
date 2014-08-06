@@ -37,7 +37,15 @@ class EvernoteScrubberTest < ActiveSupport::TestCase
   end
 
   test 'should work with namespaced attributes' do
-    assert_equal '<div>hello</div>', self.scrub('<div class:name="hello">hello</div>')
+    assert_equal '<div xml:lang="en">hello</div>', self.scrub('<div class:name="hello" xml:lang="en">hello</div>')
+  end
+
+  test 'should handle data-attributes' do
+    assert_equal '<div>Hello</div>', self.scrub('<div data-name="hello">Hello</div>')
+  end
+
+  test 'should work with undefined tags' do
+    assert_equal 'Hello', self.scrub('<undefined>Hello</undefined>')
   end
 
   def scrub(html)
