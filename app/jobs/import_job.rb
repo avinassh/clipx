@@ -22,13 +22,14 @@ class ImportJob
     # Now, insert all these articles using a single transaction
     ActiveRecord::Base.transaction do
       articles.each do |article|
-        user.articles.create(
+        article = user.articles.create(
           :url=>article[:url],
           :provider=>provider,
           :title=>article[:title],
           :tags=>article[:tags],
           :content=>article[:content]
         )
+        Resque.enqueue ExtractorJob, article.id unless article.id.nil?
       end
     end
   end
