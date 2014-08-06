@@ -1,5 +1,4 @@
 require 'ostruct'
-require 'github/markup'
 require 'base64'
 
 ReadabilityParser.api_token = Rails.application.secrets.readability_parser_key
@@ -30,15 +29,7 @@ class ExtractorJob
     username = url[url.length-2]
     reponame = url[url.length-1]
 
-    readme = client.readme("#{username}/#{reponame}")
-    readme_file_name = readme.name
-
-    # Now we render the readme to html, if we can
-    if GitHub::Markup.can_render?(readme_file_name)
-      html = GitHub::Markup.render(readme_file_name, Base64.decode64(readme.content))
-    else
-      html = Base64.decode64(readme.content)
-    end
+    html = client.readme "#{username}/#{reponame}", :accept => 'application/vnd.github.html'
 
     OpenStruct.new({
       :content => html,
