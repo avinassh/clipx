@@ -13,6 +13,8 @@ class ImportJobTest < ActiveSupport::TestCase
   end
 
   test 'pocket via perform' do
+    start_count = @pocket.user.articles.count
     ImportJob.perform(@pocket.user.id, "PocketAccount", @pocket.id)
+    assert @pocket.user.articles.count > start_count
   end
 end

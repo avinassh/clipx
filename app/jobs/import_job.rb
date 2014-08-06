@@ -52,11 +52,11 @@ class ImportJob
       )
       # Insert article has into articles array
       result.each do |key, article|
-        tags = article['tags'].map { |tag,fields| tag}.join ',' if article['tags']
+        tags = article['tags'].map { |tag,fields| tag}.select { |tag| !tag.squish.empty? }.join ',' if article['tags']
         articles.push({
           :url=>    article['resolved_url'],
-          :title=>  article['title'],
-          :tags=>   tags || '',
+          :title=>  article['title'].presence || article['resolved_title'],
+          :tags=>   tags.presence || '',
           :content=>article['excerpt']
         })
       end
