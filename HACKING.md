@@ -57,10 +57,10 @@ We provide a basic database seed, which you can import by calling `rake db:seed`
 
 ```sh
 sudo apt-get install postgresql libpq-dev phppgadmin pgadmin3
-# Now update /etc/postgresql/9.3/main/pg_hba.conf 
-# to read 
+# Now update /etc/postgresql/9.3/main/pg_hba.conf
+# to read
 # local all all md5
-# instead of 
+# instead of
 # local all all peer
 # to enable password auth
 sudo su postgres -c psql
@@ -73,3 +73,11 @@ grant all privileges on database clipx_test to clipx;
 \q
 sudo service postgresql restart
 ```
+
+##Design Decisions
+- Test::Unit instead of rspec because we are not adept enough in rails and should start with the basics.
+- Fixtures instead of factorygirl because we are still learning rails
+- Bourbon+Neat because we both hate twbs/bootstrap and wanted something that gives a cleaner syntax
+- Rails+Resque instead of a SOA because I wanted to avoid over-complication stuff when it wasn't needed.
+- CodeShip instead of Travis because its free for private repos
+- GitHub instead of BitBucket (even though its free) because its just far better.
