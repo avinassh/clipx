@@ -549,19 +549,6 @@ disallowed_tags:
   - style
   - textarea
   - xml
-disallowed_attributes:
-  - id
-  - class
-  - onclick
-  - ondblclick
-  - on*
-  - accesskey
-  - data
-  - dynsrc
-  - tabindex
-  - score
-  - name
-  - "class:name"
 valid_url_schemes:
   - http
   - https
