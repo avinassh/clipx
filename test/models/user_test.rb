@@ -39,4 +39,11 @@ class UserTest < ActiveSupport::TestCase
     assert_equal account.user, @user
     assert_equal @user.pocket_account, account
   end
+
+  test 'should return fetcher names' do
+    assert @user.fetcher_names.include? "pocket"
+    assert @user.fetcher_names.include? "github"
+    assert @user.fetcher_names.include? "twitter"
+    assert_not @user.fetcher_names.include? "evernote"
+  end
 end
