@@ -6,6 +6,7 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.where(user_id: current_user.id)
+    @fetcher_names = current_user.fetcher_names
   end
 
   # GET /articles/1

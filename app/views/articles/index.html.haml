@@ -1,25 +1,14 @@
-%h1 Listing articles
+- content_for :title do 'ClipX - Articles' end
 
-= link_to 'New Article', new_article_path
-
-%table
-  %tr
-    %th Visit Webpage
-    %th Tags
-    %th Provider
-    %th Status
-    %th Created
-    %th Show
-    %th Edit
-    %th Delete
-
-  - @articles.each do |article|
-    %tr
-      %td= link_to article.title_or_heading, article.url
-      %td= article.tags
-      %td= article.provider
-      %td= article.status
-      %td= article.created_at
-      %td= link_to 'Show', article
-      %td= link_to 'Edit', edit_article_path(article)
-      %td= link_to 'Delete', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
+#article-index.container
+  .left
+    - @fetcher_names.each do |fetcher|
+      .service
+        = fetcher.camelize
+  .right
+    - @articles.each do |article|
+      .article
+        = link_to article.title_or_heading, article
+        - if article.tags?
+          - article.tags = article.tags.sub(',', ', ')
+          %p.tag= icon('tag', article.tags)
