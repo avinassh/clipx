@@ -5,7 +5,7 @@
 .article-show {
   max-width: 900px;
   margin: auto;
-  padding: 10px 4%;
+  padding: 30px 4%;
   background: white;
 }
 
@@ -73,6 +73,14 @@ article.type-system-serif {
     margin-bottom: .4em;
   }
 
+  h4 {
+    font-family: $serif;
+    font-size: 1.2em;
+    font-weight: 400;
+    line-height: 1.1em;
+    margin-bottom: .3em;
+  }
+
   p.date {
     color: transparentize($base-font-color, .6);
     font-family: $serif-2;
@@ -87,10 +95,11 @@ article.type-system-serif {
     font-size: .9em;
     margin-bottom: 1.5em;
 
-    span {
-      font-family: $sans-serif;
-      font-weight: 700;
-    }
+//    Set by refill but these suck
+//    span {
+//      font-family: $sans-serif;
+//      font-weight: 700;
+//    }
   }
 
   a.read-more {
@@ -111,7 +120,7 @@ article.type-system-serif {
       right: -12px;
     }
   }
-  
+
   hr {
     width: 3em;
   }
@@ -119,5 +128,23 @@ article.type-system-serif {
   p.author {
     font-family: $serif-2;
     font-style: italic;
+  }
+
+  ol, ul {
+    font-family: $serif-2;
+    line-height: 1.6em;
+    font-size: .9em;
+    margin-bottom: 1.5em;
+
+    li {
+        >p {
+            margin-bottom: 1em;
+        }
+    }
+  }
+
+
+  img {
+    padding: 20px 0px;
   }
 }
