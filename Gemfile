@@ -65,6 +65,8 @@ group :test do
   gem 'mocha'
   # Dropbox to upload coverage report to
   gem 'dbox'
+  # mina to do deploys
+  gem 'mina'
 end
 
 group :production do
