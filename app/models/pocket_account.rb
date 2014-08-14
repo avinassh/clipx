@@ -1,4 +1,6 @@
 class PocketAccount < AbstractAccount
+  cattr_accessor :fetcher_name
+  @@fetcher_name = 'Pocket'
   validates_presence_of :token, :username, :last_fetched
   # Remember to make sure that the initialize method is not
   # overridden in a method with default values

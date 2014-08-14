@@ -41,9 +41,9 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'should return fetcher names' do
-    assert @user.fetcher_names.include? "pocket"
-    assert @user.fetcher_names.include? "github"
-    assert @user.fetcher_names.include? "twitter"
-    assert_not @user.fetcher_names.include? "evernote"
+    assert @user.fetcher_names.include? "Pocket"
+    assert @user.fetcher_names.include? "GitHub"
+    assert @user.fetcher_names.include? "Twitter"
+    assert_not @user.fetcher_names.include? "Evernote"
   end
 end

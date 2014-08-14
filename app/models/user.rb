@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
     result = []
     self.class.reflect_on_all_associations(:has_one).reduce([]) do |key, association|
       unless association.klass <  PublisherAccount
-        result.push association.name.to_s.split("_").first 
+        result.push association.klass.fetcher_name
       end
     end
     result
