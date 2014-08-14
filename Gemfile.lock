@@ -75,6 +75,8 @@ GEM
     faraday_middleware (0.9.1)
       faraday (>= 0.7.4, < 0.10)
     ffi (1.2.1)
+    font-awesome-sass (4.1.0)
+      sass (~> 3.2)
     getpocket (0.0.4)
       httparty
     haml (4.1.0.beta.1)
@@ -324,6 +326,7 @@ DEPENDENCIES
   default_value_for (~> 3.0.0)
   devise
   evernote_oauth
+  font-awesome-sass
   getpocket
   haml-rails
   high_voltage

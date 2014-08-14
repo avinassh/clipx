@@ -17,6 +17,7 @@ gem "default_value_for", "~> 3.0.0" # Specify default values for AR in migration
 
 gem "bourbon"
 gem "neat"
+gem 'font-awesome-sass'
 
 gem 'sanitize' # HTML sanitization before displaying article content
 # New relic to monitor app performance
