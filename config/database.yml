@@ -22,6 +22,6 @@ production:
   encoding: unicode
   adapter: postgresql
   timeout: 5000
-  username: <%= ENV['DB_USERNAME']
-  password: <%= ENV['DB_PASSWORD']
-  database: <%= ENV['DB_NAME']
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  database: <%= ENV['DB_NAME'] %>
