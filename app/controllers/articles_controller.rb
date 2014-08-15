@@ -63,6 +63,15 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # GET /articles/source/pocket
+  def source
+    @source = params[:source]
+    @articles = Article.where(user_id: current_user.id, provider: @source)
+    @fetcher_names = current_user.fetcher_names
+
+    render 'index'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article

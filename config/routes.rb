@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # Article-related
   resources :articles
+  get 'articles/source/:source', to: 'articles#source'
 
   # Devise auto-generates routes for various authentication-related methods
   # see `rake routes` for more details
