@@ -2,9 +2,10 @@
 
 #article-index.container
   .left
-    - @fetcher_names.each do |fetcher|
-      .service
-        = fetcher.camelize
+    .services
+      - @fetcher_names.each do |fetcher|
+        .service
+          = link_to fetcher, article_source_path(fetcher.downcase)
   .right
     - @articles.each do |article|
       .article

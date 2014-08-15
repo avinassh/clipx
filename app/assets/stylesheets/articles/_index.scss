@@ -3,6 +3,7 @@
 
   .left {
     @include span-columns(3);
+    padding: 10px 20px 0 0;
   }
 
   .right {
@@ -26,6 +27,18 @@
       &:hover {
         color: $hover-link-color;
       }
+    }
+  }
+
+  .services {
+    border-top: 1px solid $grey-2;
+    border-right: 1px solid $grey-2;
+    border-left: 1px solid $grey-2;
+
+    .service {
+      background: white;
+      padding: 10px;
+      border-bottom: 1px solid $grey-2;
     }
   }
 }
