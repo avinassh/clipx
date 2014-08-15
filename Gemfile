@@ -74,4 +74,6 @@ group :production do
   gem 'unicorn'
   # Redirects all rails output to stdout, recommended by heroku
   gem 'rails_12factor'
+  # This is for execjs needing a js runtime
+  gem "therubyracer"
 end
