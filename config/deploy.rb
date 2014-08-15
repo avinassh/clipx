@@ -2,37 +2,28 @@ require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
 require 'mina/rvm'
-# require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
-# require 'mina/rvm'    # for rvm support. (http://rvm.io)
+require 'mina/foreman'
 
-# Basic settings:
-#   domain       - The hostname to SSH to.
-#   deploy_to    - Path to deploy into.
-#   repository   - Git repo to clone from. (needed by mina/git)
-#   branch       - Branch name to deploy. (needed by mina/git)
-
+# Configuration Settings
 set :domain, 'clipx.captnemo.in'
 set :deploy_to, '/var/www/clipx'
 set :repository, 'git@github.com:captn3m0/clipx.git'
 set :branch, 'deploy'
+set :application, "clipx"
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
+
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['log']
+set :shared_paths, ['log', '.env']
 
 # Optional settings:
 set :user, 'ubuntu'    # Username in the server to SSH to.
-#   set :port, '30000'     # SSH port number.
 set :rvm_path, '/usr/local/rvm/scripts/rvm'
+
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
 task :environment do
-  # If you're using rbenv, use this to load the rbenv environment.
-  # Be sure to commit your .rbenv-version to your repository.
-  # invoke :'rbenv:load'
-
-  # For those using RVM, use this to load an RVM version@gemset.
-  # invoke :'rvm:use[ruby-2.0.0]'
+  # version-patch@gemset
   invoke :'rvm:use[ruby-2.0.0-p481@clipx]'
 end
 
@@ -54,9 +45,11 @@ task :deploy => :environment do
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
+    invoke :'foreman:export'
 
     to :launch do
       queue "touch #{deploy_to}/tmp/restart.txt"
+      invoke 'foreman:restart'
     end
   end
 end
