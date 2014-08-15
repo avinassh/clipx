@@ -57,10 +57,10 @@ We provide a basic database seed, which you can import by calling `rake db:seed`
 
 ```sh
 sudo apt-get install postgresql libpq-dev phppgadmin pgadmin3
-# Now update /etc/postgresql/9.3/main/pg_hba.conf 
-# to read 
+# Now update /etc/postgresql/9.3/main/pg_hba.conf
+# to read
 # local all all md5
-# instead of 
+# instead of
 # local all all peer
 # to enable password auth
 sudo su postgres -c psql
@@ -73,3 +73,11 @@ grant all privileges on database clipx_test to clipx;
 \q
 sudo service postgresql restart
 ```
+
+##Search
+We are using elasticsearch backed search using the searchkick gem. Setup instructions:
+
+1. Download and extract elasticsearch from <http://www.elasticsearch.org/download/>
+2. cd to elasticsearch directory and run `./bin/elasticsearch -d`
+
+That's it. Elasticsearch should now be up and running at <http://localhost:9200/>. Run `rake test` to see if the tests pass for search as well (currently only in the search branch till we merge).

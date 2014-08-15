@@ -16,7 +16,7 @@ provided by the [RailsApps Project](http://railsapps.github.io/).
 ##Preferences
 - Template Engine: Haml
 - Testing Framework: Test::Unit
-- Front-end Framework: Bootstrap 3.0 (Sass) (Will shift)
+- Front-end Framework: Bourbon+Neat+Bitters
 - Authentication: Devise
 - Job Queue System: Resque
 - Cron System: Resque-Scheduler

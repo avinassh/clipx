@@ -1,12 +1,20 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_article, only: [:show, :edit, :update, :destroy, :view]
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.where(user_id: current_user.id)
+    if params[:q].present?
+      @articles = Article.search(params[:q], user_id: current_user.id)
+    else
+      @articles = Article.where(user_id: current_user.id)
+    end
     @fetcher_names = current_user.fetcher_names
+  end
+
+  def autocomplete
+    render json: Article.autocomplete(params[:q], current_user.id)
   end
 
   # GET /articles/1
@@ -66,7 +74,7 @@ class ArticlesController < ApplicationController
   # GET /articles/source/pocket
   def source
     @source = params[:source]
-    @articles = Article.where(user_id: current_user.id, provider: @source)
+    @articles = Article.search(user_id: current_user.id, provider: @source)
     @fetcher_names = current_user.fetcher_names
 
     render 'index'

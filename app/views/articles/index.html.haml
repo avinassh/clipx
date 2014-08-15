@@ -1,3 +1,4 @@
+= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"
 - content_for :title do 'ClipX - Articles' end
 
 #article-index.container
@@ -13,3 +14,10 @@
         - if article.tags?
           - article.tags = article.tags.sub(',', ', ')
           %p.tag= icon('tag', article.tags)
+
+
+%script
+  $("#query").typeahead({
+  name: "q",
+  remote: "/articles/autocomplete?q=%QUERY"
+  });

@@ -235,6 +235,14 @@ Devise.setup do |config|
     :client_options => { :site => 'https://sandbox.evernote.com' }
   config.omniauth :twitter, Rails.application.secrets.twitter_key, Rails.application.secrets.twitter_secret
   config.omniauth :github, Rails.application.secrets.github_key, Rails.application.secrets.github_secret
+  config.omniauth :google_oauth2, Rails.application.secrets.google_key, Rails.application.secrets.google_secret,
+    {
+      :scope=>'https://spreadsheets.google.com/feeds/,https://www.googleapis.com/auth/drive.file,email',
+      :name =>'google',
+      :prompt=>'consent',
+      :access_type=>'offline'
+    }
+
   OmniAuth.config.on_failure = Proc.new { |env|
     OmniAuth::FailureEndpoint.new(env).redirect_to_failure
   }

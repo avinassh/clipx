@@ -8,7 +8,7 @@ class EvernoteScrubberTest < ActiveSupport::TestCase
   end
 
   test 'should remove disallowed tags completely' do
-    
+
     assert_equal "", self.scrub('<applet><div>Hello</div></applet>')
   end
 
@@ -31,9 +31,13 @@ class EvernoteScrubberTest < ActiveSupport::TestCase
   test 'should not remove empty void tags' do
     assert_equal "<br><img>", self.scrub("<br><img>")
   end
-   
+
   test 'should not remove empty tags with any inner tags' do
     assert_equal "<div><img></div>", self.scrub("<div><img></div>")
+  end
+
+  test 'should work with namespaced attributes' do
+    assert_equal '<div>hello</div>', self.scrub('<div class:name="hello">hello</div>')
   end
 
   def scrub(html)

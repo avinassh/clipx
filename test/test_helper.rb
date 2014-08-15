@@ -54,6 +54,16 @@ class ActiveSupport::TestCase
         credentials: {
           token: "0bf3c601fcd938f6f168e961affda4b9b953c322"
         }
+      },
+      google: {
+        info: {
+          email: "sm@clipx.in"
+        },
+        credentials: {
+          token: "ya29.UQBoQPABwQjv-RwAAACvgw9NNIOijJ_ug1A3J8JyCmJKI209rEeoMJMJeUtVRQ",
+          refresh_token: "1/e4KjLfXNx2_dlgcYkt2Ajd03cjJYRd6UBVzCP3DsvJo",
+          expires_at: 1.hours.from_now.to_i
+        }
       }
     })
   end
