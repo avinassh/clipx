@@ -81,3 +81,12 @@ We are using elasticsearch backed search using the searchkick gem. Setup instruc
 2. cd to elasticsearch directory and run `./bin/elasticsearch -d`
 
 That's it. Elasticsearch should now be up and running at <http://localhost:9200/>. Run `rake test` to see if the tests pass for search as well (currently only in the search branch till we merge).
+
+##Design Decisions
+- Test::Unit instead of rspec because we are not adept enough in rails and should start with the basics.
+- Fixtures instead of factorygirl because we are still learning rails
+- Bourbon+Neat because we both hate twbs/bootstrap and wanted something that gives a cleaner syntax
+- Rails+Resque instead of a SOA because I wanted to avoid over-complication stuff when it wasn't needed.
+- CodeShip instead of Travis because its free for private repos
+- GitHub instead of BitBucket (even though its free) because its just far better.
+>>>>>>> master

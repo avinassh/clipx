@@ -16,4 +16,10 @@ class EvernotePublisher < PublisherService
     end
     article.update_attribute 'status', 'published'
   end
+
+  def export(account)
+    account.user.articles.find_each do |article|
+      self.publish account, article
+    end
+  end
 end
