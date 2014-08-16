@@ -1,4 +1,6 @@
 class TwitterAccount < AbstractAccount
+  cattr_accessor :fetcher_name
+  @@fetcher_name = 'Twitter'
   validates_presence_of :uid, :username, :token, :secret
   # Remember to make sure that the initialize method is not
   # overridden in a method with default values

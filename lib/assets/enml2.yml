@@ -1,70 +1,515 @@
 allowed_tags:
-  - a
-  - abbr
-  - acronym
-  - address
-  - area
-  - b
-  - bdo
-  - big
-  - blockquote
-  - br
-  - caption
-  - center
-  - cite
-  - code
-  - col
-  - colgroup
-  - dd
-  - del
-  - dfn
-  - div
-  - dl
-  - dt
-  - em
-  - font
-  - h1
-  - h2
-  - h3
-  - h4
-  - h5
-  - h6
-  - hr
-  - i
-  - img
-  - ins
-  - kbd
-  - li
-  - map
-  - ol
-  - p
-  - pre
-  - q
-  - s
-  - samp
-  - small
-  - span
-  - strike
-  - strong
-  - sub
-  - sup
-  - table
-  - tbody
-  - td
-  - tfoot
-  - th
-  - thead
-  - title
-  - tr
-  - tt
-  - u
-  - ul
-  - var
-  - xmp
-  # This is custom hack in our enml markup
-  # because Nokogiri reports plaintext as a node of type text
-  # which is removed if this is not added here
-  - text
+  en-note:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - bgcolor
+    - text
+  a:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - accesskey
+    - tabindex
+    - charset
+    - type
+    - name
+    - href
+    - hreflang
+    - rel
+    - rev
+    - shape
+    - coords
+    - target
+  abbr:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  acronym:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  address:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  area:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - accesskey
+    - tabindex
+    - shape
+    - coords
+    - href
+    - nohref
+    - alt
+    - target
+  b:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  bdo:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  big:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  blockquote:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - cite
+  br:
+    - style
+    - title
+    - clear
+  caption:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - align
+  center:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  cite:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  code:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  col:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - align
+    - char
+    - charoff
+    - valign
+    - span
+    - width
+  colgroup:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - align
+    - char
+    - charoff
+    - valign
+    - span
+    - width
+  dd:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  del:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - cite
+    - datetime
+  dfn:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  div:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - align
+  dl:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - compact
+  dt:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  em:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  en-crypt:
+    - hint
+    - cipher
+    - length
+  en-media:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - type
+    - hash
+    - height
+    - width
+    - usemap
+    - align
+    - border
+    - hspace
+    - vspace
+    - longdesc
+    - alt
+  en-todo:
+    - checked
+  font:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - size
+    - color
+    - face
+  h1:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - align
+  h2:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - align
+  h3:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - align
+  h4:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - align
+  h5:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - align
+  h6:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - align
+  hr:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - align
+    - noshade
+    - size
+    - width
+  i:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  img:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - src
+    - alt
+    - name
+    - longdesc
+    - height
+    - width
+    - usemap
+    - ismap
+    - align
+    - border
+    - hspace
+    - vspace
+  ins:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - cite
+    - datetime
+  kbd:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  li:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - type
+    - value
+  map:
+    - lang
+    - "xml:lang"
+    - dir
+    - title
+    - name
+  ol:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - type
+    - compact
+    - start
+  p:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - align
+  pre:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - width
+  q:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - cite
+  s:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  samp:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  small:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  span:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  strike:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  strong:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  sub:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  sup:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  table:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - summary
+    - width
+    - border
+    - cellspacing
+    - cellpadding
+    - align
+    - bgcolor
+  tbody:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - align
+    - char
+    - charoff
+    - valign
+  td:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - align
+    - char
+    - charoff
+    - valign
+    - abbr
+    - rowspan
+    - colspan
+    - nowrap
+    - bgcolor
+    - width
+    - height
+  tfoot:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - align
+    - char
+    - charoff
+    - valign
+  th:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - align
+    - char
+    - charoff
+    - valign
+    - abbr
+    - rowspan
+    - colspan
+    - nowrap
+    - bgcolor
+    - width
+    - height
+  thead:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - align
+    - char
+    - charoff
+    - valign
+  tr:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - align
+    - char
+    - charoff
+    - valign
+    - bgcolor
+  tt:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  u:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  ul:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+    - type
+    - compact
+  var:
+    - style
+    - title
+    - lang
+    - "xml:lang"
+    - dir
+  text:
 disallowed_tags:
   - applet
   - base
@@ -87,7 +532,6 @@ disallowed_tags:
   - isindex
   - label
   - layer
-  -
   - legend
   - link
   - marquee
@@ -105,19 +549,6 @@ disallowed_tags:
   - style
   - textarea
   - xml
-disallowed_attributes:
-  - id
-  - class
-  - onclick
-  - ondblclick
-  - on*
-  - accesskey
-  - data
-  - dynsrc
-  - tabindex
-  - score
-  - name
-  - "class:name"
 valid_url_schemes:
   - http
   - https

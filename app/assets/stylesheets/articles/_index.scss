@@ -1,0 +1,44 @@
+#article-index {
+  @include outer-container;
+
+  .left {
+    @include span-columns(3);
+    padding: 10px 20px 0 0;
+  }
+
+  .right {
+    @include span-columns(9);
+  }
+
+  .article {
+    margin: 10px 0px;
+    padding: 10px;
+    border-left: 3px solid $grey-4;
+
+    .tag {
+      color: $grey-4;
+      font-size: 0.9em;
+      margin: 0;
+    }
+
+    a {
+      color: $dark-gray;
+
+      &:hover {
+        color: $hover-link-color;
+      }
+    }
+  }
+
+  .services {
+    border-top: 1px solid $grey-2;
+    border-right: 1px solid $grey-2;
+    border-left: 1px solid $grey-2;
+
+    .service {
+      background: white;
+      padding: 10px;
+      border-bottom: 1px solid $grey-2;
+    }
+  }
+}

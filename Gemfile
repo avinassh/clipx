@@ -8,17 +8,23 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'bootstrap-sass'
 gem 'devise'  # Handles user authentication
 gem 'haml-rails'
 gem 'high_voltage'  # Static Pages like about
 gem "default_value_for", "~> 3.0.0" # Specify default values for AR in migrations
+
+gem "bourbon"
+gem "neat"
+gem 'font-awesome-sass'
+
 gem 'sanitize' # HTML sanitization before displaying article content
 # New relic to monitor app performance
 # Used in all environments except test
 gem 'newrelic_rpm'
 gem 'render_anywhere' # Render print view in jobs
+gem 'foreman' # Single task runner for all our processes
+
 # Evernote Util class requires these
 gem 'tidy_ffi' # html to valid xhtml
 gem 'loofah' # HTML sanitization & enml conversions
@@ -47,6 +53,9 @@ gem "resque"  # Background Jobs
 gem "resque-scheduler"  # Schedule background jobs
 gem 'resque-web', require: 'resque_web' # Web UI for our resque jobs
 
+# Search related
+gem 'searchkick'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]
@@ -63,8 +72,8 @@ group :test do
   gem 'simplecov'
   # This is for stubbing and mocking support in tests
   gem 'mocha'
-  # CodeClimate
-  gem "codeclimate-test-reporter"
+  # Dropbox to upload coverage report to
+  gem 'dbox'
 end
 
 group :production do

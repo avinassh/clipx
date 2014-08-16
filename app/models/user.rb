@@ -45,6 +45,16 @@ class User < ActiveRecord::Base
     end
   end
 
+  def fetcher_names
+    result = []
+    self.class.reflect_on_all_associations(:has_one).reduce([]) do |key, association|
+      unless association.klass <  PublisherAccount
+        result.push association.klass.fetcher_name
+      end
+    end
+    result
+  end
+
   # Returns all PublisherAccounts belonging to the user
   def publishers
     self.accounts PublisherAccount

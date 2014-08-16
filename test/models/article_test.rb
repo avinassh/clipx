@@ -21,4 +21,11 @@ class ArticleTest < ActiveSupport::TestCase
     @article.heading = "Heading"
     assert_equal "Heading", @article.title_or_heading
   end
+
+  test 'autocomplete should work' do
+    Article.all.reindex
+    res = Article.autocomplete("Sample", @article.user_id)
+    assert_equal 1, res.count
+    assert_equal ["Sample Title"], res
+  end
 end

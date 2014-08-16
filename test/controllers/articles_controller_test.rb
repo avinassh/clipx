@@ -76,4 +76,26 @@ class ArticlesControllerTest < ActionController::TestCase
     assert_equal @article.user_id, users(:default).id
     assert_equal @article.status, 'fetched'
   end
+
+  test 'should search articles' do
+    Article.all.reindex
+    get :index, { :format => :json, :q => "Sample Title" }
+    assert_response :success
+    articles = JSON.parse(@response.body)
+    assert_equal "Sample Title", articles[0]['title']
+
+    get :index, { :format => :json, :q => "GDOFDGSFDHSJF" }
+    assert_response :success
+    articles = JSON.parse(@response.body)
+    assert_equal 0, articles.length
+  end
+
+  test 'should autocomplete articles' do
+    Article.all.reindex
+    get :autocomplete, { :q => "Sample"}
+    assert_response :success
+    articles = JSON.parse(@response.body)
+    assert_equal ["Sample Title"], articles
+    assert_equal 1, articles.count
+  end
 end
