@@ -55,7 +55,7 @@ END
     note.title = title
     note.tagNames = tags
     note.content = self.class.HtmlToENML content
-    note.tagNames = tags.map &:squish # Tag names may not begin or end with a space. 
+    note.tagNames = tags.map &:squish # Tag names may not begin or end with a space.
     note.notebookGuid = notebook_guid if notebook_guid
     note.attributes = self.create_note_attribute url, source
     raise Exceptions::ENMLValidationError unless self.class.validate_enml note.content
@@ -90,7 +90,7 @@ END
     # Call the parent constructor with just the protocol
     super noteStoreProtocol
   end
-  
+
   def self.fix_tags(html)
     tidy = TidyFFI::Tidy.new(html)
     tidy.options.output_xhtml = true
@@ -113,12 +113,12 @@ END
   end
   # Convert an html partial to enml format
   # validates the doc offline and throws errors
-  def self.HtmlToENML(html)    
+  def self.HtmlToENML(html)
     # The order of  calls is important
     # All methods return strings, not xml entities
     # sanitize returns valid xhtml enml, which must be wrapped inside en-note
     # to work
-    self.textToENML self.fix_tags self.sanitize html 
+    self.textToENML self.fix_tags self.sanitize html
   end
 
   # Takes in invalid enml and

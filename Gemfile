@@ -69,8 +69,8 @@ group :test do
   gem 'simplecov'
   # This is for stubbing and mocking support in tests
   gem 'mocha'
-  # CodeClimate
-  gem "codeclimate-test-reporter"
+  # Dropbox to upload coverage report to
+  gem 'dbox'
 end
 
 group :production do
