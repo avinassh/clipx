@@ -4,6 +4,8 @@
 #article-index.container
   .left
     .services
+      .service
+        = link_to 'All', articles_url
       - @fetcher_names.each do |fetcher|
         .service
           = link_to fetcher, article_source_path(fetcher.downcase)
