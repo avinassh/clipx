@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
     if params[:q].present?
       @articles = Article.search(params[:q], user_id: current_user.id)
     else
-      @articles = Article.where(user_id: current_user.id)
+      @articles = Article.where(user_id: current_user.id).order('created_at DESC')
     end
     @fetcher_names = current_user.fetcher_names
   end
@@ -74,7 +74,7 @@ class ArticlesController < ApplicationController
   # GET /articles/source/pocket
   def source
     @source = params[:source]
-    @articles = Article.search(user_id: current_user.id, where: {provider: @source})
+    @articles = Article.search(@source, field: [:provider], where: {user_id: current_user.id}, order: {created_at: :desc})
     @fetcher_names = current_user.fetcher_names
 
     render 'index'

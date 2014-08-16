@@ -9,7 +9,8 @@ class Article < ActiveRecord::Base
       provider: provider,
       status: status,
       tags: tags,
-      user_id: user_id
+      user_id: user_id,
+      created_at: created_at
     }
   end
 
