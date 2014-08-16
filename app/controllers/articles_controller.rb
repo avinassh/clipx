@@ -74,7 +74,7 @@ class ArticlesController < ApplicationController
   # GET /articles/source/pocket
   def source
     @source = params[:source]
-    @articles = Article.search(user_id: current_user.id, provider: @source)
+    @articles = Article.search(user_id: current_user.id, where: {provider: @source})
     @fetcher_names = current_user.fetcher_names
 
     render 'index'
