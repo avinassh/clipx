@@ -71,7 +71,7 @@ task :deploy => :environment do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
 
-    export_cmd = "rvmsudo bundle exec foreman export upstart /etc/init -a #{application} -u #{user} -l #{foreman_log}"
+    export_cmd = "sudo foreman export upstart /etc/init -a #{application} -u #{user} -l #{foreman_log}"
     queue %{
       echo "-----> Exporting foreman procfile for #{application}"
       #{echo_cmd %[cd #{deploy_to!}/#{current_path!} ; #{export_cmd}]}
