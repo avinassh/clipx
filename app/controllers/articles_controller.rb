@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     if params[:q].present?
-      @articles = Article.search(params[:q], user_id: current_user.id)
+      @articles = Article.search(params[:q], where: { user_id: current_user.id } )
     else
       @articles = Article.where(user_id: current_user.id).order('created_at DESC')
     end
