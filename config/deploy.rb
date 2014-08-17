@@ -56,7 +56,7 @@ desc "Restart the application services"
 task :restart do
   queue %{
     echo "-----> Restarting #{application} services"
-    #{echo_cmd %[sudo start #{application} || sudo restart #{application}]}
+    #{echo_cmd %[sudo restart #{application}]}
   }
 end
 

@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20140730163147) do
     t.string  "email"
     t.string  "refresh_token"
     t.string  "token"
-    t.integer "last_published",             default: 1406603568
+    t.integer "last_published",             default: 1408099199
     t.integer "token_expiry"
     t.string  "spreadsheet_id", limit: 500
     t.integer "user_id"
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20140730163147) do
     t.string  "token"
     t.string  "secret"
     t.string  "last_fetched_id"
-    t.integer "last_fetched"
+    t.integer "last_fetched",    default: 1406755289
     t.integer "user_id"
   end
 

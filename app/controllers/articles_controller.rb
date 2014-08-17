@@ -1,11 +1,20 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_article, only: [:show, :edit, :update, :destroy, :view]
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.where(user_id: current_user.id)
+    if params[:q].present?
+      @articles = Article.search(params[:q], user_id: current_user.id)
+    else
+      @articles = Article.where(user_id: current_user.id).order('created_at DESC')
+    end
+    @fetcher_names = current_user.fetcher_names
+  end
+
+  def autocomplete
+    render json: Article.autocomplete(params[:q], current_user.id)
   end
 
   # GET /articles/1
@@ -60,6 +69,15 @@ class ArticlesController < ApplicationController
       format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # GET /articles/source/pocket
+  def source
+    @source = params[:source]
+    @articles = Article.search(@source, field: [:provider], where: {user_id: current_user.id}, order: {created_at: :desc})
+    @fetcher_names = current_user.fetcher_names
+
+    render 'index'
   end
 
   private

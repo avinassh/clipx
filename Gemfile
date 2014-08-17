@@ -10,16 +10,21 @@ gem 'dotenv-rails', :groups => [:production]
 gem 'pg'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'bootstrap-sass'
 gem 'devise'  # Handles user authentication
 gem 'haml-rails'
 gem 'high_voltage'  # Static Pages like about
 gem "default_value_for", "~> 3.0.0" # Specify default values for AR in migrations
+
+gem "bourbon"
+gem "neat"
+gem 'font-awesome-sass'
+
 gem 'sanitize' # HTML sanitization before displaying article content
 # New relic to monitor app performance
 # Used in all environments except test
 gem 'newrelic_rpm'
+gem 'foreman' # Single task runner for all our processes
 
 # Evernote Util class requires these
 gem 'tidy_ffi' # html to valid xhtml
@@ -39,8 +44,6 @@ gem 'evernote_oauth'
 gem 'readability_parser'
 gem 'twitter'
 gem 'octokit'
-# We are using our fork
-# TODO: Shift to upstream when PR is merged
 gem 'simple_google_drive' # Used for creating a spreadsheet
 gem 'google_drive' # For writing to a spreadsheet
 
@@ -48,6 +51,9 @@ gem 'google_drive' # For writing to a spreadsheet
 gem "resque"  # Background Jobs
 gem "resque-scheduler"  # Schedule background jobs
 gem 'resque-web', require: 'resque_web' # Web UI for our resque jobs
+
+# Search related
+gem 'searchkick'
 
 group :development do
   gem 'better_errors'

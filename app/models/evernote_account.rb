@@ -1,5 +1,7 @@
 class EvernoteAccount < PublisherAccount
-  
+  cattr_accessor :fetcher_name
+  @@fetcher_name = 'Evernote'
+
   validates_presence_of :username, :token, :notestore_url, :notebook_guid
 
   # Creates a new (unsaved) evernote account
