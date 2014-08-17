@@ -2,7 +2,6 @@ require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
 require 'mina/rvm'
-require 'mina/foreman'
 
 # Configuration Settings
 set :domain, 'clipx.captnemo.in'
@@ -20,6 +19,8 @@ set :shared_paths, ['log', '.env']
 set :user, 'ubuntu'    # Username in the server to SSH to.
 set :rvm_path, '/usr/local/rvm/scripts/rvm'
 
+set_default :foreman_log,  lambda { "#{deploy_to!}/#{shared_path}/log" }
+
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
 task :environment do
@@ -35,6 +36,30 @@ task :setup => :environment do
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
 end
 
+desc "Start the application services"
+task :start do
+  queue %{
+    echo "-----> Starting #{application} services"
+    #{echo_cmd %[sudo start #{application}]}
+  }
+end
+
+desc "Stop the application services"
+task :stop do
+  queue %{
+    echo "-----> Stopping #{application} services"
+    #{echo_cmd %[sudo stop #{application}]}
+  }
+end
+
+desc "Restart the application services"
+task :restart do
+  queue %{
+    echo "-----> Restarting #{application} services"
+    #{echo_cmd %[sudo start #{application} || sudo restart #{application}]}
+  }
+end
+
 desc "Deploys the current version to the server."
 task :deploy => :environment do
   deploy do
@@ -45,11 +70,16 @@ task :deploy => :environment do
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
-    invoke :'foreman:export'
+
+    export_cmd = "rvmsudo bundle exec foreman export upstart /etc/init -a #{application} -u #{user} -l #{foreman_log}"
+    queue %{
+      echo "-----> Exporting foreman procfile for #{application}"
+      #{echo_cmd %[cd #{deploy_to!}/#{current_path!} ; #{export_cmd}]}
+    }
 
     to :launch do
       queue "touch #{deploy_to}/tmp/restart.txt"
-      invoke 'foreman:restart'
+      invoke 'restart'
     end
   end
 end
