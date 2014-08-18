@@ -1,5 +1,8 @@
 # config/unicorn.rb
-worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
+worker_processes Integer(ENV["WEB_CONCURRENCY"] || 4)
+working_directory "/var/www/clipx/current"
+listen "/var/www/clipx/current/tmp/sockets/unicorn.sock", :backlog => 64
+pid "/var/www/clipx/current/tmp/unicorn.pid"
 timeout 15
 # Preload the entire app
 preload_app true
