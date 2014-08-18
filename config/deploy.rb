@@ -1,7 +1,6 @@
 require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
-require 'mina/rvm'
 
 # Configuration Settings
 set :domain, 'clipx.captnemo.in'
@@ -17,15 +16,12 @@ set :shared_paths, ['log', '.env']
 
 # Optional settings:
 set :user, 'ubuntu'    # Username in the server to SSH to.
-set :rvm_path, '/usr/local/rvm/scripts/rvm'
 
 set_default :foreman_log,  lambda { "#{deploy_to!}/#{shared_path}/log" }
 
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
 task :environment do
-  # version-patch@gemset
-  invoke :'rvm:use[ruby-2.0.0-p481@clipx]'
 end
 
 # Put any custom mkdir's in here for when `mina setup` is ran.
