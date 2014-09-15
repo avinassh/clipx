@@ -22,14 +22,13 @@ class FetchPocketJob
 
     # Iterate over the result and insert to db
     result.each do |key, a|
-      puts a['resolved_url']
-      tags = a['tags'].map { |tag,fields| tag}.join ',' if a['tags']
+      tags = article['tags'].map { |tag,fields| tag}.select { |tag| !tag.squish.empty? }.join ',' if article['tags']
       begin
         article = user.articles.create!(
           :url=>a['resolved_url'],
-          :title=>a['given_title'],
+          :title=>a['title'].presence || a['resolved_title'],
           :provider=>'pocket',
-          :tags=>tags,
+          :tags=>tags.presence||'',
           #TODO: Check for any images that pocket gave us
           :content => a['excerpt']
         )

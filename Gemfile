@@ -25,7 +25,7 @@ gem 'sanitize' # HTML sanitization before displaying article content
 # Used in all environments except test
 gem 'newrelic_rpm'
 gem 'foreman' # Single task runner for all our processes
-
+gem 'render_anywhere' # Render print view in jobs
 # Evernote Util class requires these
 gem 'tidy_ffi' # html to valid xhtml
 gem 'loofah' # HTML sanitization & enml conversions
@@ -37,6 +37,7 @@ gem 'omniauth-evernote'
 gem 'omniauth-twitter'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-dropbox-oauth2'
 
 # API connections
 gem 'getpocket'
@@ -44,8 +45,10 @@ gem 'evernote_oauth'
 gem 'readability_parser'
 gem 'twitter'
 gem 'octokit'
+gem 'github-markup'
 gem 'simple_google_drive' # Used for creating a spreadsheet
 gem 'google_drive' # For writing to a spreadsheet
+gem 'dropbox-sdk'
 
 # Resque related
 gem "resque"  # Background Jobs
@@ -54,6 +57,15 @@ gem 'resque-web', require: 'resque_web' # Web UI for our resque jobs
 
 # Search related
 gem 'searchkick'
+
+# Used to render github readmes
+gem 'redcarpet'
+gem 'RedCloth'
+gem 'rdoc', '3.6.1'
+gem 'org-ruby'
+gem 'creole'
+gem 'wikicloth'
+gem 'asciidoctor'
 
 group :development do
   gem 'better_errors'

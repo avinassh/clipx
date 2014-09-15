@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :print]
 
   # GET /articles
   # GET /articles.json
@@ -20,6 +20,10 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+  end
+
+  def print
+    render "articles/print", layout: false
   end
 
   # GET /articles/new

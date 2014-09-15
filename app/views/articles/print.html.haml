@@ -1,0 +1,13 @@
+-# This print css tag works for both the browser and file-system in places like dropbox
+%link{href:"../../assets/print.css", media:"all", rel:"stylesheet"}
+!= sanitize(@article.content)
+
+%hr
+
+%b
+  Tags:
+=@article.tags
+
+%b
+  Provider:
+=@article.provider

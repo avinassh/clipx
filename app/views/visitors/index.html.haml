@@ -62,5 +62,14 @@
         = link_to "(Re-integrate)", user_omniauth_authorize_path(:github)
     - else
       = link_to "Integrate with GitHub", user_omniauth_authorize_path(:github)
+  %div
+    Dropbox Integration :
+    - if current_user.dropbox_account
+      %span
+        = current_user.dropbox_account.email
+        = link_to "(Re-integrate)", user_omniauth_authorize_path(:dropbox)
+    - else
+      = link_to "Integrate with Dropbox", user_omniauth_authorize_path(:dropbox)
+
 - else
   You are not logged in
