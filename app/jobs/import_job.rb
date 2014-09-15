@@ -22,13 +22,14 @@ class ImportJob
     # Now, insert all these articles using a single transaction
     ActiveRecord::Base.transaction do
       articles.each do |article|
-        user.articles.create(
+        article = user.articles.create(
           :url=>article[:url],
           :provider=>provider,
           :title=>article[:title],
           :tags=>article[:tags],
           :content=>article[:content]
         )
+        Resque.enqueue ExtractorJob, article.id unless article.id.nil?
       end
     end
   end
@@ -63,6 +64,29 @@ class ImportJob
       offset+=count
       break if result.empty? or result.count < count
     end
+    # Return articles array
+    articles
+  end
+
+
+  # Fetches all starred repos for a github account
+  # Returns an array of Article hashes
+  def self.github(account)
+    # Setup
+    articles = Array.new
+    github = Octokit::Client.new(:access_token => account.token)
+    Octokit.auto_paginate = true
+
+    # Now we iterate
+    github.starred.reverse.each do |repo|
+      articles.push({
+        :url=>repo.html_url,
+        :title=>repo.full_name,
+        :tags=>repo.language,
+        :content => repo.description
+      })
+    end
+
     # Return articles array
     articles
   end

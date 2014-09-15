@@ -59,15 +59,6 @@ gem 'resque-web', require: 'resque_web' # Web UI for our resque jobs
 # Search related
 gem 'searchkick'
 
-# Used to render github readmes
-gem 'redcarpet'
-gem 'RedCloth'
-gem 'rdoc', '3.6.1'
-gem 'org-ruby'
-gem 'creole'
-gem 'wikicloth'
-gem 'asciidoctor'
-
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]
