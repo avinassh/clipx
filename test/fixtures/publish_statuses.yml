@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# The provider is the sink where the article has been published
+evernote:
+  article: one
+  provider: evernote
+dropbox:
+  article: one
+  provider: dropbox
+google:
+  article: two
+  provider: google
