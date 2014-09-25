@@ -6,7 +6,7 @@ require 'mina/git'
 set :domain, 'clipx.me'
 set :deploy_to, '/var/www/clipx'
 set :repository, 'git@github.com:captn3m0/clipx.git'
-set :branch, 'deploy'
+set :branch, 'master'
 set :application, "clipx"
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
