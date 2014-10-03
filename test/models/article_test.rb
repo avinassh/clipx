@@ -60,7 +60,7 @@ class ArticleTest < ActiveSupport::TestCase
 
   test "mark_as_published should set the article's status field as well" do
     # Make sure that the status was fetched to confirm the change
-    assert_equal @github_article.status, 'fetched'
+    @github_article.update_attribute 'status', 'fetched'
     @github_article.mark_as_published('evernote')
     assert_equal @github_article.status, 'published'
   end
