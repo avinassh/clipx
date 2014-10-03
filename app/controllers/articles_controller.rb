@@ -5,11 +5,29 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    if params[:q].present?
-      @articles = Article.search(params[:q], where: { user_id: current_user.id } )
-    else
-      @articles = Article.where(user_id: current_user.id).order('created_at DESC')
-    end
+    @articles =
+      if params[:q].present?
+        Article.search(params[:q], {
+          where: {
+            user_id: current_user.id ,
+            status: { not: "fetched" }
+          },
+          order: {
+            created_at: :desc
+          }
+        })
+      else
+        Article.search(current_user.id, {
+          fields: [ :user_id=>:exact ],
+          where: {
+            status:{ not: "fetched" }
+          },
+          order: {
+            created_at: :desc
+          }
+        })
+      end
+      #render plain: @articles.size
     @fetcher_names = current_user.fetcher_names
   end
 
