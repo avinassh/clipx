@@ -27,7 +27,6 @@ class ArticlesController < ApplicationController
           }
         })
       end
-      #render plain: @articles.size
     @fetcher_names = current_user.fetcher_names
   end
 

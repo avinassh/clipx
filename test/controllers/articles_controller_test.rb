@@ -74,7 +74,7 @@ class ArticlesControllerTest < ActionController::TestCase
     patch :update, id: @article, article: { user_id: wrong_user_id, status: 'invalid' }
     @article.reload
     assert_equal @article.user_id, users(:default).id
-    assert_equal @article.status, 'fetched'
+    assert_equal @article.status, 'held'
   end
 
   test 'should search articles' do

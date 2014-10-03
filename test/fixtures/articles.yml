@@ -7,7 +7,7 @@ one:
   tags: "hello, world"
   provider: test
   user: default
-  status: fetched
+  status: held
   content: |
     <div><article class="markdown-body entry-content">
     <p>(Or &#x201C;HTML and JavaScript for Web 3.0 all-in-one&#x201D;.)</p>
@@ -262,7 +262,7 @@ two:
   tags: "hello, world"
   provider: test
   user: non_admin
-  status: fetched
+  status: held
   content: Hello <b>World</b>
 github:
   url: https://github.com/github/markup
@@ -272,5 +272,5 @@ github:
   tags: ruby
   provider: github
   user: default
-  status: fetched
-  content:
+  status: held
+  content: Some content
