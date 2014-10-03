@@ -20,6 +20,7 @@ class DropboxPublisher < PublisherService
     # Save the article to dropbox
     # Third parameter is overwrite=true
     client.put_file(path, html, true)
+    article.mark_as_published("dropbox")
   end
   def export(account)
     # First lets put the print css

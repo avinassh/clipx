@@ -14,7 +14,7 @@ class EvernotePublisher < PublisherService
       # retry publishing
       article.publish
     end
-    article.update_attribute 'status', 'published'
+    article.mark_as_published("evernote")
   end
 
   def export(account)

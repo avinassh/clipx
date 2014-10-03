@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140803143757) do
+ActiveRecord::Schema.define(version: 20140915104233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20140803143757) do
     t.string  "email"
     t.string  "refresh_token"
     t.string  "token"
-    t.integer "last_published",             default: 1408099199
+    t.integer "last_published",             default: 1406603568
     t.integer "token_expiry"
     t.string  "spreadsheet_id", limit: 500
     t.integer "user_id"
@@ -85,13 +85,22 @@ ActiveRecord::Schema.define(version: 20140803143757) do
   add_index "pocket_accounts", ["user_id"], name: "index_pocket_accounts_on_user_id", using: :btree
   add_index "pocket_accounts", ["username"], name: "index_pocket_accounts_on_username", unique: true, using: :btree
 
+  create_table "publish_statuses", force: true do |t|
+    t.integer  "article_id"
+    t.string   "provider"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publish_statuses", ["article_id"], name: "index_publish_statuses_on_article_id", using: :btree
+
   create_table "twitter_accounts", force: true do |t|
     t.integer "uid"
     t.string  "username"
     t.string  "token"
     t.string  "secret"
     t.string  "last_fetched_id"
-    t.integer "last_fetched",    default: 1406755289
+    t.integer "last_fetched"
     t.integer "user_id"
   end
 

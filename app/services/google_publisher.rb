@@ -2,6 +2,7 @@ class GooglePublisher < PublisherService
   def publish (account, article)
     client = GoogleUtil.new account
     client.add_row account.spreadsheet_id, self.article_to_row(article)
+    article.mark_as_published("google")
   end
 
   def export (account)
@@ -13,6 +14,7 @@ class GooglePublisher < PublisherService
 
     account.user.articles.find_each do |article|
       # We take all of these and export/write it to a spreadsheet
+      article.mark_as_published("google")
       table.push self.article_to_row(article)
     end
 
