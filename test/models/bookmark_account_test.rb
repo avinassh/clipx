@@ -13,6 +13,5 @@ class BookmarkAccountTest < ActiveSupport::TestCase
     @bookmark.setup_token
     assert_not_nil @bookmark.token
     assert_not_equal @bookmark.token, original_token
-    puts @bookmark.token
   end
 end

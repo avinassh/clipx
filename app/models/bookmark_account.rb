@@ -1,6 +1,8 @@
 require 'securerandom'
 
 class BookmarkAccount < AbstractAccount
+  cattr_accessor :fetcher_name
+  @@fetcher_name = 'Bookmarks'
   validates_presence_of :token
   belongs_to :user
   attr_reader :token
