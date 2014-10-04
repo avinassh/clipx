@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_one :google_account, :dependent => :destroy
   has_one :dropbox_account, :dependent => :destroy
   has_many :articles, :dependent => :destroy
+  has_one :bookmark_account, :dependent => :destroy
 
   def add_account_omniauth(provider, omniauth)
     # The user model should not be concerned about parsing the omniauth hash
