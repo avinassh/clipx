@@ -3,7 +3,7 @@ require 'mina/rails'
 require 'mina/git'
 
 # Configuration Settings
-set :domain, 'clipx.me'
+set :domain, 'clipx.cloudapp.net'
 set :deploy_to, '/var/www/clipx'
 set :repository, 'git@github.com:captn3m0/clipx.git'
 set :branch, 'master'
