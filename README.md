@@ -22,7 +22,7 @@ provided by the [RailsApps Project](http://railsapps.github.io/).
 - Web Server: Webrick
 
 ##Production
-- Web Server: Unicorn
+- Web Server: Apache + Passenger
 
 ##Third party integrations
 - Code Coverage is provided via simplecov and code climate.

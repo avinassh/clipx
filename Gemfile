@@ -82,8 +82,6 @@ group :test do
 end
 
 group :production do
-  # This is our web server for production, recommended by both heroku and github
-  gem 'unicorn'
   # Redirects all rails output to stdout, recommended by heroku
   gem 'rails_12factor'
   # This is for execjs needing a js runtime
